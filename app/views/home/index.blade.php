@@ -1,0 +1,13 @@
+@extends('layout.main')
+@section('title')
+Autoservice
+@stop
+@section('header')
+	@include('layout.header')
+@stop
+@section('navbar')
+	@include('layout.nav')
+@stop
+@section('content')
+	@include('home.slider')
+@stop
