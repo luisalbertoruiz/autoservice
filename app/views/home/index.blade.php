@@ -10,4 +10,10 @@ Autoservice
 @stop
 @section('content')
 	@include('home.slider')
+	@include('home.panelP')
+	@include('home.sidebar')
+	@include('home.sidebarb')
+@stop
+@section('footer')
+	@include('layout.footer')
 @stop
