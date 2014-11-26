@@ -12,3 +12,7 @@
 */
 
 Route::get ('/', 'HomeController@index');
+Route::get ('/contacto', 'HomeController@contacto');
+Route::get ('/servicios', 'HomeController@servicio');
+Route::get ('/nosotros', 'HomeController@nosotros');
+Route::get ('/login', 'HomeController@login');

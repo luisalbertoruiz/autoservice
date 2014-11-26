@@ -3879,11 +3879,15 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-width: 1px 0 0;
 }
 .navbar-brand {
+  color: black;
   float: left;
   height: 50px;
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
+  background: red;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -4193,12 +4197,12 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   border-color: red;
 }
 .navbar-inverse .navbar-brand {
-  color: #777;
+  color: black;
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-  color: #fff;
-  background-color: transparent;
+  color: white;
+  background-color: red;
 }
 .navbar-inverse .navbar-text {
   color: #777;
