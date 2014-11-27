@@ -16,3 +16,5 @@ Route::get ('/contacto', 'HomeController@contacto');
 Route::get ('/servicios', 'HomeController@servicio');
 Route::get ('/nosotros', 'HomeController@nosotros');
 Route::get ('/login', 'HomeController@login');
+
+Route::get ('/admin/cliente/nuevo', 'ClientesController@create');
