@@ -16,13 +16,14 @@ class CreateClientesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('nombre');
-			$table->string('apellido');
+			$table->string('rfc');
 			$table->string('calle');
-			$table->string('numero');
 			$table->string('colonia');
 			$table->string('localidad');
+			$table->string('cp');
 			$table->string('telefono');
 			$table->string('celular');
+			$table->string('radio');
 			$table->string('email');
 			$table->timestamps();
 		});

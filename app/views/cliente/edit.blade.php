@@ -9,43 +9,46 @@ Autoservice
 	
 @stop
 @section('content')
-<div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 col-xs-offset-1">
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2">
 	<div class="panel panel-primary">
-		  <div class="panel-heading">
-				<h3 class="panel-title">Nuevo Cliente</h3>
-		  </div>
-		  <div class="panel-body">
-		  <form action="" method="POST" role="form">
-		  	<div class="form-group">
-		  	<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 col-xs-offset-1">
-		  		<label for="nombre">Nombre</label>
-		  		<input type="text" class="form-control" id="nombre"  name="name"><br>
-		  		<label for="apellido">Apellido</label>
-		  		<input type="text" class="form-control" id="apellido" name="name"><br>
-		  		<label for="calle">Calle</label>
-		  		<input type="text" class="form-control" id="calle" name="name"><br>
-		  		<label for="numero">Numero</label>
-		  		<input type="text" class="form-control" id="numero" name="numero"><br>
-		  		<label for="colonia">Colonia</label>
-		  		<input type="text" class="form-control" id="colonia" name="colonia"><br>
-		  		</div>
-		  		<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-		  		<label for="localidad">Localidad</label>
-		  		<input type="text" class="form-control" id="localidad" name="localidad"><br>
-		  		<label for="cp">Codigo Postal</label>
-		  		<input type="text" class="form-control" id="cp" name="cp"><br>
-		  		<label for="telefono">Telefonor</label>
-		  		<input type="text" class="form-control" id="telefono" name="telefono"><br>
-		  		<label for="celular">Celular</label>
-		  		<input type="text" class="form-control" id="celular" name="celular"><br>
-		  		<label for="email">Email</label>
-		  		<input type="text" class="form-control" id="email" name="email"><br>
-		  		</div>
-		  	</div>
-		  	<button type="submit" class="btn btn-primary">Submit</button>
-		  </form>
-		  </div>
-	</div>	
+		<div class="panel-heading">
+			<h2 class="panel-title"><span class="glyphicon glyphicon-th-large"> Nuevo Cliente</h2>
+		</div>
+		<div class="panel-body">
+			{{ Form::open(array('url' => 'admin/cancha/guardar', 'files' => true)) }}
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<div class="form-group">
+						<label for="nombre">Nombre o Razón Social</label>
+						<input type="text" class="form-control" id="nombre" name="nombre" maxlength="30" required value="{{ $cliente->nombre }}"><br>
+						<label for="rfc">RFC</label>
+						<input type="text" class="form-control" id="rfc" name="rfc" maxlength="60" required value="{{ $cliente->rfc }}"><br>
+						<label for="calle">Calle y Número</label>
+						<input type="text" class="form-control" id="calle" name="calle" maxlength="30" required value="{{ $cliente->calle }}"><br>
+						<label for="colonia">Colonia</label>
+						<input type="text" class="form-control" id="colonia" name="colonia" maxlength="30" required value="{{ $cliente->colonia }}"><br>
+						<label for="localidad">Localidad</label>
+						<input type="text" class="form-control" id="localidad" name="localidad" maxlength="30" required value="{{ $cliente->localidad }}"><br>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<div class="form-group">
+						<label for="cp">Código Postal</label>
+						<input type="text" class="form-control" id="cp" name="cp" maxlength="6" required value="{{ $cliente->cp }}"><br>
+						<label for="telefono">Teléfono</label>
+						<input type="text" class="form-control" id="telefono" name="telefono" maxlength="10" required value="{{ $cliente->telefono }}"><br>
+						<label for="celular">Celular</label>
+						<input type="text" class="form-control" id="celular" name="celular" maxlength="10" required value="{{ $cliente->celular }}"><br>
+						<label for="radio">Radio</label>
+						<input type="text" class="form-control" id="radio" name="radio" maxlength="10" required value="{{ $cliente->radio }}"><br>
+						<label for="email">eMail</label>
+						<input type="text" class="form-control" id="email" name="email" maxlength="50" required value="{{ $cliente->email }}"><br>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-success pull-right">Registrar</button>
+				<a class="btn btn-primary" href='{{ URL::previous() }}'>Regresar</a>
+			{{ Form::close() }}
+		</div>
+	</div>
 </div>
 @stop
 @section('footer')
