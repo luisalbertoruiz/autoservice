@@ -24,3 +24,11 @@ Route::get  ('/admin/cliente/mostrar/{id}','ClientesController@show');
 Route::get  ('/admin/cliente/editar/{id}','ClientesController@edit');
 Route::post ('/admin/cliente/actualizar/{id}','ClientesController@update');
 Route::get  ('/admin/cliente/eliminar/{id}','ClientesController@destroy');
+// Users
+Route::get  ('/admin/usuario','UsersController@index');
+Route::get  ('/admin/usuario/crear','UsersController@create');
+Route::post ('/admin/usuario/guardar','UsersController@store');
+Route::get  ('/admin/usuario/mostrar/{id}','UsersController@show');
+Route::get  ('/admin/usuario/editar/{id}','UsersController@edit');
+Route::post ('/admin/usuario/actualizar/{id}','UsersController@update');
+Route::get  ('/admin/usuario/eliminar/{id}','UsersController@destroy');

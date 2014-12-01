@@ -14,17 +14,16 @@ Autoservice
 			  
 			  <div class="panel-body">
 				  <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-sm-offset-2">
-						<form action="" method="POST" role="form">
 							<legend>Inicia Seción</legend>
-						
-							<div class="form-group">
-								<label for="user">Usuario</label>
-								<input type="text" class="form-control" id="user" name="user"><br><br>
-								<label for="pass">Contraseña</label>
-								<input type="pass" class="form-control" id="pass" name="pass"><br>
-							</div>
-							<button type="submit" class="btn btn-primary pull-right">Entrar</button>
-						</form><br><br><br>
+						{{ Form::open(array('url' => 'user/loged')) }} 
+					    	<div class="form-group">
+								{{ Form::label("username", "Usuario") }}
+								{{ Form::text("username",'',array('class' => 'form-control')) }}<br>
+								{{ Form::label("password", "Password") }}
+								{{ Form::password("password",array('class' => 'form-control')) }}
+							</div><br>
+							{{ Form::button('Ingresar', array('type' => 'submit', 'class' => 'btn btn-success pull-right')) }}  
+						{{ Form::close() }}<br><br><br><br>
 					</div>
 			  </div>
 		</div>

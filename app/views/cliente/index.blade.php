@@ -25,6 +25,7 @@ Autoservice
 							<th>Teléfono</th>
 							<th></th>
 							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>

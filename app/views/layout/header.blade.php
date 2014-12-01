@@ -1,3 +1,3 @@
 <div class="page-header">
-  <h1>Auto<small>service</small></h1>
+  <img src="src/logo.png" alt="logo">
 </div>

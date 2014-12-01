@@ -6,7 +6,7 @@ Autoservice
 	@include('layout.header')
 @stop
 @section('navbar')
-	
+	@include('layout.nav')
 @stop
 @section('content')
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2">
@@ -15,15 +15,15 @@ Autoservice
 			<h2 class="panel-title"><span class="glyphicon glyphicon-th-large"> Nuevo Cliente</h2>
 		</div>
 		<div class="panel-body">
-			{{ Form::open(array('url' => 'admin/cancha/guardar', 'files' => true)) }}
+			{{ Form::open(array('url' => 'admin/cliente/guardar' }}
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 					<div class="form-group">
 						<label for="nombre">Nombre o Razón Social</label>
 						<input type="text" class="form-control" id="nombre" name="nombre" maxlength="30" required value="{{ $cliente->nombre }}"><br>
 						<label for="rfc">RFC</label>
-						<input type="text" class="form-control" id="rfc" name="rfc" maxlength="60" required value="{{ $cliente->rfc }}"><br>
+						<input type="text" class="form-control" id="rfc" name="rfc" maxlength="13" required value="{{ $cliente->rfc }}"><br>
 						<label for="calle">Calle y Número</label>
-						<input type="text" class="form-control" id="calle" name="calle" maxlength="30" required value="{{ $cliente->calle }}"><br>
+						<input type="text" class="form-control" id="calle" name="calle" maxlength="50" required value="{{ $cliente->calle }}"><br>
 						<label for="colonia">Colonia</label>
 						<input type="text" class="form-control" id="colonia" name="colonia" maxlength="30" required value="{{ $cliente->colonia }}"><br>
 						<label for="localidad">Localidad</label>
@@ -33,7 +33,7 @@ Autoservice
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 					<div class="form-group">
 						<label for="cp">Código Postal</label>
-						<input type="text" class="form-control" id="cp" name="cp" maxlength="6" required value="{{ $cliente->cp }}"><br>
+						<input type="text" class="form-control" id="cp" name="cp" maxlength="5" required value="{{ $cliente->cp }}"><br>
 						<label for="telefono">Teléfono</label>
 						<input type="text" class="form-control" id="telefono" name="telefono" maxlength="10" required value="{{ $cliente->telefono }}"><br>
 						<label for="celular">Celular</label>

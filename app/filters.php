@@ -39,11 +39,11 @@ Route::filter('auth', function()
 	{
 		if (Request::ajax())
 		{
-			return Response::make('Unauthorized', 401);
+			return Response::make('/');
 		}
 		else
 		{
-			return Redirect::guest('login');
+			return Redirect::guest('/');
 		}
 	}
 });
@@ -67,7 +67,7 @@ Route::filter('auth.basic', function()
 
 Route::filter('guest', function()
 {
-	if (Auth::check()) return Redirect::to('/');
+	if (Auth::check()) return Redirect::to('/admin/cliente');
 });
 
 /*
