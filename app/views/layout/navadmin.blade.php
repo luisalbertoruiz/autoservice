@@ -13,8 +13,8 @@
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse navbar-ex1-collapse">
 		<ul class="nav navbar-nav">
-			<li><a href="{{ URL::to('/servicios') }}">Usuarios</a></li>
-			<li><a href="{{ URL::to('/nosotros') }}">Clientes</a></li>
+			<li><a href="{{ URL::to('/admin/usuario') }}">Usuarios</a></li>
+			<li><a href="{{ URL::to('/admin/cliente') }}">Clientes</a></li>
 			<li><a href="{{ URL::to('/contacto') }}">Automoviles</a></li>
 			<li><a href="{{ URL::to('/contacto') }}">Servicios</a></li>
 		</ul>

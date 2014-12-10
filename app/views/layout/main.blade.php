@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" type="image/x-icon" href="favicon.ico">
+		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 		<title>@yield('title')</title>
 		<!-- Bootstrap CSS -->
 		{{ HTML::style('css/bootstrap.css') }}
@@ -12,6 +12,7 @@
 		{{ HTML::script('js/jquery.js') }}
 		<!-- Bootstrap JavaScript -->
 		{{ HTML::script('js/bootstrap.js') }}
+		{{ HTML::script('js/script.js') }}
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -26,31 +27,5 @@
 			@yield('content')
 			@yield('footer')
 		</div>
-		<script>
-			$(document).ready(function() {
-			    setTimeout(function() {
-			        $("#notice").fadeOut(750);
-			    },2500);
-
-			    $('#buscarajax').keyup(function(event) {
-			 		var valor = $(this).val();
-			 		var urls = $(this).attr('name');
-			 		if (valor == ""){
-
-			 		}
-			 		else{
-				    	$.ajax({
-				    		url: urls+"/"+valor
-				    	})
-				    	.done(function(res) {
-				    		$('.table-responsive').html(res);
-				    	})
-				    	.fail(function() {
-				    		$('.table-responsive').html('no se encontro resultado');
-				    	});
-			 		}	
-			    });
-			});
-		</script>
 	</body>
 </html>
