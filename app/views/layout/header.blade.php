@@ -1,3 +1,3 @@
 <div class="page-header">
-  <img src="src/logo.png" alt="logo">
+  {{ HTML::image('src/logo.png') }}
 </div>

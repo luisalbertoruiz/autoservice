@@ -18,15 +18,6 @@
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
-		<script>
-			<script type="text/javascript">
-			$(document).ready(function() {
-			    setTimeout(function() {
-			        $("#notice").fadeOut(750);
-			    },2500);
-			});
-		</script>
-		</script>
 	</head>
 	<body>
 		<div class="container">
@@ -35,5 +26,31 @@
 			@yield('content')
 			@yield('footer')
 		</div>
+		<script>
+			$(document).ready(function() {
+			    setTimeout(function() {
+			        $("#notice").fadeOut(750);
+			    },2500);
+
+			    $('#buscarajax').keyup(function(event) {
+			 		var valor = $(this).val();
+			 		var urls = $(this).attr('name');
+			 		if (valor == ""){
+
+			 		}
+			 		else{
+				    	$.ajax({
+				    		url: urls+"/"+valor
+				    	})
+				    	.done(function(res) {
+				    		$('.table-responsive').html(res);
+				    	})
+				    	.fail(function() {
+				    		$('.table-responsive').html('no se encontro resultado');
+				    	});
+			 		}	
+			    });
+			});
+		</script>
 	</body>
 </html>

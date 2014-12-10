@@ -6,16 +6,16 @@ Autoservice
 	@include('layout.header')
 @stop
 @section('navbar')
-	@include('layout.nav')
+	@include('layout.navadmin')
 @stop
 @section('content')
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h2 class="panel-title"><span class="glyphicon glyphicon-th-large"> Nuevo Cliente</h2>
+			<h2 class="panel-title"><span class="glyphicon glyphicon-user"> Nuevo Cliente</h2>
 		</div>
 		<div class="panel-body">
-			{{ Form::open(array('url' => 'admin/cliente/guardar' }}
+			{{ Form::open(array('url' => 'admin/cliente/actualizar/'.$cliente->id)) }}
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 					<div class="form-group">
 						<label for="nombre">Nombre o Razón Social</label>
@@ -44,7 +44,7 @@ Autoservice
 						<input type="text" class="form-control" id="email" name="email" maxlength="50" required value="{{ $cliente->email }}"><br>
 					</div>
 				</div>
-				<button type="submit" class="btn btn-success pull-right">Registrar</button>
+				<button type="submit" class="btn btn-success pull-right">Actualizar</button>
 				<a class="btn btn-primary" href='{{ URL::previous() }}'>Regresar</a>
 			{{ Form::close() }}
 		</div>

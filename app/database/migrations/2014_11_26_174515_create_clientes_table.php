@@ -16,7 +16,7 @@ class CreateClientesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('nombre');
-			$table->string('rfc');
+			$table->string('rfc')->unique();
 			$table->string('calle');
 			$table->string('colonia');
 			$table->string('localidad');

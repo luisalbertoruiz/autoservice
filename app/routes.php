@@ -24,6 +24,15 @@ Route::get  ('/admin/cliente/mostrar/{id}','ClientesController@show');
 Route::get  ('/admin/cliente/editar/{id}','ClientesController@edit');
 Route::post ('/admin/cliente/actualizar/{id}','ClientesController@update');
 Route::get  ('/admin/cliente/eliminar/{id}','ClientesController@destroy');
+Route::get  ('/admin/cliente/buscar/{val}','ClientesController@find');
+// Vehiculos
+Route::get  ('/admin/vehiculo','VehiculosController@index');
+Route::get  ('/admin/vehiculo/crear','VehiculosController@create');
+Route::post ('/admin/vehiculo/guardar','VehiculosController@store');
+Route::get  ('/admin/vehiculo/mostrar/{id}','VehiculosController@show');
+Route::get  ('/admin/vehiculo/editar/{id}','VehiculosController@edit');
+Route::post ('/admin/vehiculo/actualizar/{id}','VehiculosController@update');
+Route::get  ('/admin/vehiculo/eliminar/{id}','VehiculosController@destroy');
 // Users
 Route::get  ('/admin/usuario','UsersController@index');
 Route::get  ('/admin/usuario/crear','UsersController@create');

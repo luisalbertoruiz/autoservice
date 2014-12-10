@@ -33,20 +33,35 @@ class ClientesController extends \BaseController {
 	 */
 	public function store()
 	{
-		$cliente = new Cliente();
-		$cliente->nombre    = Str::title(Str::lower(Input::get('nombre')));
-		$cliente->rfc       = Input::get('rfc');
-		$cliente->calle     = Input::get('calle');
-		$cliente->colonia   = Input::get('colonia');
-		$cliente->localidad = Input::get('localidad');
-		$cliente->cp        = Input::get('cp');
-		$cliente->telefono  = Input::get('telefono');
-		$cliente->celular   = Input::get('celular');
-		$cliente->radio     = Input::get('radio');
-		$cliente->email     = Input::get('email');
-		$cliente->save();
-		return Redirect::to('admin/cliente')
-		->with('flash_warning', 'Se ha agregado correctamente el cliente.');
+		$entradas = array(
+			'rfc' => Str::upper(Input::get('rfc'))
+			);
+		$reglas = array(
+            'rfc' => 'required|unique:clientes'
+        );
+        $validador = Validator::make(Input::all(), $reglas);
+		if($validador->fails())
+		{
+			return Redirect::to('admin/cliente')
+			->with('flash_warning', 'Ya se encuentra registrado un cliente con ese RFC.');
+		}
+		else
+		{
+			$cliente = new Cliente();
+			$cliente->nombre    = Str::title(Str::lower(Input::get('nombre')));
+			$cliente->rfc       = Str::upper(Input::get('rfc'));
+			$cliente->calle     = Str::title(Str::lower(Input::get('calle')));
+			$cliente->colonia   = Str::title(Str::lower(Input::get('colonia')));
+			$cliente->localidad = Input::get('localidad');
+			$cliente->cp        = Input::get('cp');
+			$cliente->telefono  = Input::get('telefono');
+			$cliente->celular   = Input::get('celular');
+			$cliente->radio     = Input::get('radio');
+			$cliente->email     = Input::get('email');
+			$cliente->save();
+			return Redirect::to('admin/cliente')
+			->with('flash_notice', 'Se ha agregado correctamente el cliente.');
+		}
 	}
 
 	/**
@@ -86,12 +101,11 @@ class ClientesController extends \BaseController {
 	{
 		$cliente   = Cliente::find($id);
 		$cliente->nombre    = Str::title(Str::lower(Input::get('nombre')));
-		$cliente->apellido  = Str::title(Str::lower(Input::get('apellido')));
-		$cliente->rfc       = Input::get('rfc');
-		$cliente->calle     = Input::get('calle');
-		$cliente->numero    = Input::get('numero');
-		$cliente->colonia   = Input::get('colonia');
+		$cliente->rfc       = Str::upper(Input::get('rfc'));
+		$cliente->calle     = Str::title(Str::lower(Input::get('calle')));
+		$cliente->colonia   = Str::title(Str::lower(Input::get('colonia')));
 		$cliente->localidad = Input::get('localidad');
+		$cliente->cp        = Input::get('cp');
 		$cliente->telefono  = Input::get('telefono');
 		$cliente->celular   = Input::get('celular');
 		$cliente->radio     = Input::get('radio');
@@ -113,7 +127,19 @@ class ClientesController extends \BaseController {
 		$cliente = Cliente::find($id);
 		$cliente->delete();
 		return Redirect::to('admin/cliente')
-		->with('flash_warning', 'Se ha eliminado correctamente el cliente.');
+		->with('flash_error', 'Se ha eliminado correctamente el cliente.');
 	}
 
+	/**
+	 * Remove the specified resource from storage.
+	 * FIND /clientes/{id}
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function find($val)
+	{
+		$clientes = DB::table('clientes')->where('nombre','like','%'.$val.'%')->orderBy('nombre')->get();
+		return View::make('cliente.busqueda')->with('clientes',$clientes);
+	}
 }

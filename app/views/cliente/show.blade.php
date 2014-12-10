@@ -6,13 +6,13 @@ Autoservice
 	@include('layout.header')
 @stop
 @section('navbar')
-	@include('layout.nav')
+	@include('layout.navadmin')
 @stop
 @section('content')
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h2 class="panel-title"><span class="glyphicon glyphicon-th-large"> Cliente</h2>
+			<h2 class="panel-title"><span class="glyphicon glyphicon-user"> Cliente</h2>
 		</div>
 		<div class="panel-body">
 			<div class="table-responsive">
@@ -24,6 +24,10 @@ Autoservice
 						</tr>
 					</thead>
 					<tbody>
+						<tr>
+							<td>ID:</td>
+							<td>{{$cliente->id}}</td>
+						</tr>
 						<tr>
 							<td>RFC:</td>
 							<td>{{$cliente->rfc}}</td>
@@ -59,6 +63,14 @@ Autoservice
 						<tr>
 							<td>eMail:</td>
 							<td>{{$cliente->email}}</td>
+						</tr>
+						<tr>
+							<td>Agregado:</td>
+							<td>{{$cliente->created_at}}</td>
+						</tr>
+						<tr>
+							<td>Actualizado:</td>
+							<td>{{$cliente->updated_at}}</td>
 						</tr>
 					</tbody>
 				</table>
