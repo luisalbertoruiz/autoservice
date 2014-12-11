@@ -22,7 +22,8 @@ class VehiculosController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('vehiculo.create');
+		$marcas = Marca::all();
+		return View::make('vehiculo.create')->with('marcas',$marcas);
 	}
 
 	/**

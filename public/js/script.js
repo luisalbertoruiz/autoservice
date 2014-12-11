@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     setTimeout(function() {
         $("#notice").fadeOut(750);
     },2500);

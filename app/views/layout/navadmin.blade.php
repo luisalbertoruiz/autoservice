@@ -15,8 +15,8 @@
 		<ul class="nav navbar-nav">
 			<li><a href="{{ URL::to('/admin/usuario') }}">Usuarios</a></li>
 			<li><a href="{{ URL::to('/admin/cliente') }}">Clientes</a></li>
-			<li><a href="{{ URL::to('/contacto') }}">Automoviles</a></li>
-			<li><a href="{{ URL::to('/contacto') }}">Servicios</a></li>
+			<li><a href="{{ URL::to('/admin/vehiculo') }}">Vehículos</a></li>
+			<li><a href="{{ URL::to('/admin/servicio') }}">Servicios</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="{{ URL::to('/login') }}">Salir</a></li>

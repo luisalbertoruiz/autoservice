@@ -41,3 +41,11 @@ Route::get  ('/admin/usuario/mostrar/{id}','UsersController@show');
 Route::get  ('/admin/usuario/editar/{id}','UsersController@edit');
 Route::post ('/admin/usuario/actualizar/{id}','UsersController@update');
 Route::get  ('/admin/usuario/eliminar/{id}','UsersController@destroy');
+// Servicios
+Route::get  ('/admin/servicio','ServiciosController@index');
+Route::get  ('/admin/servicio/crear','ServiciosController@create');
+Route::post ('/admin/servicio/guardar','ServiciosController@store');
+Route::get  ('/admin/servicio/mostrar/{id}','ServiciosController@show');
+Route::get  ('/admin/servicio/editar/{id}','ServiciosController@edit');
+Route::post ('/admin/servicio/actualizar/{id}','ServiciosController@update');
+Route::get  ('/admin/servicio/eliminar/{id}','ServiciosController@destroy');
