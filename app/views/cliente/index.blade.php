@@ -12,7 +12,10 @@ Autoservice
 <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
 	<div class="panel panel-primary">
 		<div class="panel-heading">
-			<h2 class="panel-title"><span class="glyphicon glyphicon-user"></span> Clientes<span><input name="{{ URL::to('/admin/cliente/buscar') }}" class="pull-right" type="text" placeholder="buscar" id="buscarajax"></span><span class="glyphicon glyphicon-search pull-right">&nbsp;</span></h2> 
+			<h2 class="panel-title">
+			<span class="glyphicon glyphicon-user"></span> Clientes<span>
+			<input name="{{ URL::to('/admin/cliente/buscar') }}" class="pull-right" type="text" placeholder="buscar" id="buscarajax"></span>
+			<span class="glyphicon glyphicon-search pull-right">&nbsp;</span></h2> 
 		</div>
 		<div class="panel-body">
 		{{ HTML::link(URL::to('/admin/cliente/crear'), 'Nuevo Cliente', array('class' => 'btn btn-primary btn-sm pull-right')) }}

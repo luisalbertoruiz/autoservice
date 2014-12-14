@@ -75,7 +75,8 @@ Autoservice
 					</tbody>
 				</table>
 			</div>
-			<a class="btn btn-primary" href='{{ URL::previous() }}'>Regresar</a>
+			<a class="btn btn-success pull-right" href="{{ URL::to('admin/vehiculo/crear') }}">Agregar Vehículo</a>
+			<a class="btn btn-primary" href="{{ URL::previous() }}">Regresar</a>
 		</div>
 	</div>
 </div>
