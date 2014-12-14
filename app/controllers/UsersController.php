@@ -32,7 +32,37 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		if (=='')
+		{
+			
+		}
+		try
+		{
+		// Create the user
+		$user = Sentry::createUser(array(
+		    'email'       => 'john.doe@example.com',
+		    'password'    => 'test',
+		    'activated'   => true,
+		    'permissions' => array(
+		        'user.create' => -1,
+		        'user.delete' => -1,
+		        'user.view'   => 1,
+		        'user.update' => 1,
+		    ),
+		));
+		}
+		catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
+		{
+		    echo 'Login field is required.';
+		}
+		catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
+		{
+		    echo 'Password field is required.'
+		}
+		catch (Cartalyst\Sentry\Users\UserExistsException $e)
+		{
+		    echo 'User with this login already exists.';
+		}
 	}
 
 	/**
@@ -85,28 +115,35 @@ class UsersController extends \BaseController {
 
 	public function login()
 	{
-		Auth::logout();
-		return View::make('user.login');
+		Sentry::logout();
+		return View::make('home.login');
 	}
 
 	public function loged()
 	{
-		$user = [
+		$credenciales = [
 			'username' => Input::get('username'),
             'password' => Input::get('password')];
 
-        if (Auth::attempt($user, false)) {
-        return Redirect::route('peliculas')
-             ->with('flash_notice', 'Bienvenido.');
+        try
+        {
+        	$usuario = Sentry::authenticate($credenciales, false);
+        	if ($user)
+        	{
+        		return Redirect::to('login')
+        		->with('flash_notice', 'Bienvenido.');
+        	}
         }
-
-        return Redirect::route('login')
-            ->with('flash_error', 'Tus datos son incorrectos.');
+        catch (\Exception $e)
+        {
+        	return Redirect::to('admin/cliente')
+        	->with('flash_error', 'Los datos son incorrectos.');
+        }
 	}
 
 	public function logout()
 	{
-		Auth::logout();
+		Sentry::logout();
 		return Redirect::route('login')
     	->with('flash_warning', 'Has cerrado correctamente tu sesión. Hasta luego.');	
 	}
