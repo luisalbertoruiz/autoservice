@@ -10,7 +10,7 @@ class ClientesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$clientes = DB::table('clientes')->orderBy('nombre')->paginate(5);
+		$clientes = DB::table('clientes')->get();
 		return View::make('cliente.index')->with('clientes',$clientes);
 	}
 
@@ -42,7 +42,7 @@ class ClientesController extends \BaseController {
         $validador = Validator::make(Input::all(), $reglas);
 		if($validador->fails())
 		{
-			return Redirect::to('admin/cliente')
+			return Redirect::to('/cliente')
 			->with('flash_warning', 'Ya se encuentra registrado un cliente con ese RFC.');
 		}
 		else
@@ -59,8 +59,8 @@ class ClientesController extends \BaseController {
 			$cliente->radio     = Input::get('radio');
 			$cliente->email     = Input::get('email');
 			$cliente->save();
-			return Redirect::to('admin/cliente')
-			->with('flash_notice', 'Se ha agregado correctamente el cliente.');
+			return Redirect::to('/cliente')
+			->with('alert-success', 'Se ha agregado el cliente.');
 		}
 	}
 
@@ -111,8 +111,8 @@ class ClientesController extends \BaseController {
 		$cliente->radio     = Input::get('radio');
 		$cliente->email     = Input::get('email');
 		$cliente->save();
-		return Redirect::to('admin/cliente')
-		->with('flash_warning', 'Se ha editado correctamente el cliente.');
+		return Redirect::to('/cliente')
+		->with('alert-success', 'Se ha editado el cliente.');
 	}
 
 	/**
@@ -126,20 +126,7 @@ class ClientesController extends \BaseController {
 	{
 		$cliente = Cliente::find($id);
 		$cliente->delete();
-		return Redirect::to('admin/cliente')
-		->with('flash_error', 'Se ha eliminado correctamente el cliente.');
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * FIND /clientes/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function find($val)
-	{
-		$clientes = DB::table('clientes')->where('nombre','like','%'.$val.'%')->orderBy('nombre')->get();
-		return View::make('cliente.busqueda')->with('clientes',$clientes);
+		return Redirect::to('/cliente')
+		->with('alert-danger', 'Se ha eliminado el cliente.');
 	}
 }

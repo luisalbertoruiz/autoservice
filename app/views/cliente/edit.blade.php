@@ -5,9 +5,6 @@ Autoservice
 @section('header')
 	@include('layout.header')
 @stop
-@section('navbar')
-	@include('layout.navadmin')
-@stop
 @section('content')
 <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2">
 	<div class="panel panel-primary">
@@ -15,7 +12,7 @@ Autoservice
 			<h2 class="panel-title"><span class="glyphicon glyphicon-user"> Nuevo Cliente</h2>
 		</div>
 		<div class="panel-body">
-			{{ Form::open(array('url' => 'admin/cliente/actualizar/'.$cliente->id)) }}
+			{{ Form::open(array('url' => '/cliente/actualizar/'.$cliente->id)) }}
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 					<div class="form-group">
 						<label for="nombre">Nombre o Razón Social</label>
@@ -50,7 +47,4 @@ Autoservice
 		</div>
 	</div>
 </div>
-@stop
-@section('footer')
-	@include('layout.footer')
 @stop

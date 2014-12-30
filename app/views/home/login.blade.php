@@ -15,7 +15,7 @@ Autoservice
 			  <div class="panel-body">
 				  <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-sm-offset-2">
 							<legend>Inicia Seción</legend>
-						{{ Form::open(array('url' => 'user/loged')) }} 
+						{{ Form::open(array('url' => 'loged')) }} 
 					    	<div class="form-group">
 								{{ Form::label("username", "Usuario") }}
 								{{ Form::text("username",'',array('class' => 'form-control')) }}<br>

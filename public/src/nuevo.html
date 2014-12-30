@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+    <link rel="shortcut icon" href="http://localhost/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="screen" href="nuevo%20Archivos/bootstrap.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="nuevo%20Archivos/chosen.css">
+    <script type="text/javascript" src="nuevo%20Archivos/jquery.js"></script>
+    <script type="text/javascript" src="nuevo%20Archivos/chosen.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="nuevo%20Archivos/main.css">
+      </head>
+  <body>
+    <h3 class="heading">Asignar nuevo pago</h3>
+
+
+<form action="/gestion/web/administrativo.php/registro_pago/create" method="post">
+  <table>
+    <tfoot>
+      <tr>
+        <td colspan="2">
+          &nbsp;<a href="http://localhost/gestion/web/administrativo.php/pago">Back to list</a>
+                    <input value="Save" type="submit">
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+  <div class="row-fluid">
+    <div class="span11">
+      <div class="span5">                        
+        <div class="vcard"> 
+          <ul>
+            <li>
+              <label for="asignar_pago_proyecto_id">Proyecto</label>              <select style="display: none;" class="chosen chzn-done" name="asignar_pago[proyecto_id]" id="asignar_pago_proyecto_id">
+<option value="" selected="selected"></option>
+<option value="1">Diagnóstico sobre la situación actual de la Gestión de
+ Residuos electrónicos en la Ciudad de México y Diseño e Implementación 
+de una Plataforma Tecnológica (programa piloto) en el Distrito Federal.</option>
+<option value="2">Desarrollo socio-tecnológico de un sistema para el 
+tratamiento integral en sitio de residuos orgánicos (MBio) provenientes 
+de mercados de abasto popular del Distrito Federal. Planta Piloto en el 
+Centro de Acopio y Comercialización de Nopal - Verdura de la Delegación 
+Milpa Alta</option>
+</select><div style="width: 220px;" class="chzn-container chzn-container-single" id="asignar_pago_proyecto_id_chzn"><a href="javascript:void(0)" class="chzn-single chzn-default"><span>Select an Option</span><div><b></b></div></a><div class="chzn-drop" style="left: -9000px; width: 218px; top: 30px;"><div class="chzn-search"><input style="width: 183px;" autocomplete="off" type="text"></div><ul class="chzn-results"><li id="asignar_pago_proyecto_id_chzn_o_1" class="active-result" style="">Diagnóstico
+ sobre la situación actual de la Gestión de Residuos electrónicos en la 
+Ciudad de México y Diseño e Implementación de una Plataforma Tecnológica
+ (programa piloto) en el Distrito Federal.</li><li id="asignar_pago_proyecto_id_chzn_o_2" class="active-result" style="">Desarrollo
+ socio-tecnológico de un sistema para el tratamiento integral en sitio 
+de residuos orgánicos (MBio) provenientes de mercados de abasto popular 
+del Distrito Federal. Planta Piloto en el Centro de Acopio y 
+Comercialización de Nopal - Verdura de la Delegación Milpa Alta</li></ul></div></div>            </li>
+            <li>
+              <label for="asignar_pago_convenio_id">Convenio</label>              <select style="display: none;" class="chosen chzn-done" name="asignar_pago[convenio_id]" id="asignar_pago_convenio_id">
+<option value="" selected="selected"></option>
+<option value="1">155</option>
+<option value="2">187</option>
+</select><div style="width: 220px;" class="chzn-container chzn-container-single" id="asignar_pago_convenio_id_chzn"><a href="javascript:void(0)" class="chzn-single chzn-default"><span>Select an Option</span><div><b></b></div></a><div class="chzn-drop" style="left: -9000px; width: 218px; top: 30px;"><div class="chzn-search"><input style="width: 183px;" autocomplete="off" type="text"></div><ul class="chzn-results"><li id="asignar_pago_convenio_id_chzn_o_1" class="active-result" style="">155</li><li id="asignar_pago_convenio_id_chzn_o_2" class="active-result" style="">187</li></ul></div></div>            </li>
+            <li>
+              <label for="asignar_pago_moneda_id">Tipo de Moneda</label>              <select style="display: none;" class="chosen chzn-done" name="asignar_pago[moneda_id]" id="asignar_pago_moneda_id">
+<option value="" selected="selected"></option>
+<option value="260">MXN</option>
+<option value="261">USD</option>
+<option value="262">EUR</option>
+</select><div style="width: 220px;" class="chzn-container chzn-container-single" id="asignar_pago_moneda_id_chzn"><a href="javascript:void(0)" class="chzn-single chzn-default"><span>Select an Option</span><div><b></b></div></a><div class="chzn-drop" style="left: -9000px; width: 218px; top: 30px;"><div class="chzn-search"><input style="width: 183px;" autocomplete="off" type="text"></div><ul class="chzn-results"><li id="asignar_pago_moneda_id_chzn_o_1" class="active-result" style="">MXN</li><li id="asignar_pago_moneda_id_chzn_o_2" class="active-result" style="">USD</li><li id="asignar_pago_moneda_id_chzn_o_3" class="active-result" style="">EUR</li></ul></div></div>            </li>
+            <li>
+              <label for="asignar_pago_recursos">Recursos $</label>              <input class="rec" name="asignar_pago[recursos]" id="asignar_pago_recursos" type="text">            </li>
+            <li>
+              <label for="asignar_pago_fecha_entrega">Fecha de Pago</label>              <input class="fecha" name="asignar_pago[fecha_entrega]" id="asignar_pago_fecha_entrega" type="text">            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<script>
+  $(document).ready(function($) {
+    $('.chosen').chosen();
+    $('.fecha').datepicker({
+        format: 'yyyy/mm/dd',
+        language: 'es',
+        weekStart: 1,
+        autoclose: true
+    });
+  });
+</script>
+  
+
+</body></html>

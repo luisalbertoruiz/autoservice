@@ -32,37 +32,7 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		if (=='')
-		{
-			
-		}
-		try
-		{
-		// Create the user
-		$user = Sentry::createUser(array(
-		    'email'       => 'john.doe@example.com',
-		    'password'    => 'test',
-		    'activated'   => true,
-		    'permissions' => array(
-		        'user.create' => -1,
-		        'user.delete' => -1,
-		        'user.view'   => 1,
-		        'user.update' => 1,
-		    ),
-		));
-		}
-		catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
-		{
-		    echo 'Login field is required.';
-		}
-		catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
-		{
-		    echo 'Password field is required.'
-		}
-		catch (Cartalyst\Sentry\Users\UserExistsException $e)
-		{
-		    echo 'User with this login already exists.';
-		}
+
 	}
 
 	/**
@@ -113,39 +83,69 @@ class UsersController extends \BaseController {
 		//
 	}
 
+		/**
+	 * Muestra formulario de logueo.
+	 * GET /users
+	 *
+	 * @return Response
+	 */
 	public function login()
 	{
-		Sentry::logout();
 		return View::make('home.login');
 	}
 
+	/**
+	 * Valida los datos de logueo.
+	 * POST /users
+	 *
+	 * @return Response
+	 */
 	public function loged()
 	{
-		$credenciales = [
-			'username' => Input::get('username'),
-            'password' => Input::get('password')];
+		try
+		{
+		    // Login credentials
+		    $credentials = array(
+				'username' => Input::get('username'),
+				'password' => Input::get('password')
+		    );
 
-        try
-        {
-        	$usuario = Sentry::authenticate($credenciales, false);
-        	if ($user)
-        	{
-        		return Redirect::to('login')
-        		->with('flash_notice', 'Bienvenido.');
-        	}
-        }
-        catch (\Exception $e)
-        {
-        	return Redirect::to('admin/cliente')
-        	->with('flash_error', 'Los datos son incorrectos.');
-        }
+		    // Authenticate the user
+		    $user = Sentry::authenticate($credentials, false);
+		    return Redirect::to('/cliente');
+		}
+		catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
+		{
+			return Redirect::to('/login')->with('mensaje','Nombre de Usuario requerido.');
+		}
+		catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
+		{
+			return Redirect::to('/login')->with('mensaje','Contraseña requerida.');
+		}
+		catch (Cartalyst\Sentry\Users\WrongPasswordException $e)
+		{
+			return Redirect::to('/login')->with('mensaje','Contraseña incorrecta, intentalo de nuevo.');
+		}
+		catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
+		{
+			return Redirect::to('/login')->with('mensaje','El Usuario no fue encontrado.');
+		}
+		catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
+		{
+			return Redirect::to('/login')->with('mensaje','El Usuario no esta activo.');
+		}
 	}
 
+	/**
+	 * Termina la sesion actual.
+	 * GET /users
+	 *
+	 * @return Response
+	 */
 	public function logout()
 	{
 		Sentry::logout();
-		return Redirect::route('login')
-    	->with('flash_warning', 'Has cerrado correctamente tu sesión. Hasta luego.');	
+		return Redirect::to('/login')->with('mensaje','Hasta luego.');
 	}
 
 }
