@@ -41,9 +41,9 @@ class="page-body page-fade-only"
 					<td>{{ $cliente->nombre }}</td>
 					<td>{{ $cliente->rfc }}</td>
 					<td>
-					<a href="{{URL::to('/cliente/mostrar/'.$cliente->id)}}" class="btn btn-success btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="ver datos"><i class="entypo-eye"></i></a>
-					<a href="{{URL::to('/cliente/editar/'.$cliente->id)}}" class="btn btn-orange btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="editar datos"><i class="entypo-pencil"></i></a>
-					<a href="{{URL::to('/cliente/eliminar/'.$cliente->id)}}" class="btn btn-danger btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="eliminar"><i class="entypo-trash"></i></a>
+					<a href="{{URL::to('/cliente/mostrar/'.$cliente->id)}}" class="btn btn-success btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="mostrar"><i class="glyphicon glyphicon-eye-open"></i></a>
+					<a href="{{URL::to('/cliente/editar/'.$cliente->id)}}" class="btn btn-orange btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="editar"><i class="fa fa-edit"></i></a>
+					<a href="{{URL::to('/cliente/eliminar/'.$cliente->id)}}" class="btn btn-danger btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="eliminar"><i class="glyphicon glyphicon-trash"></i></a>
 					</td>
 				</tr>
 			@endforeach

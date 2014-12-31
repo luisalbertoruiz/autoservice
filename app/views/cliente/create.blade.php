@@ -25,7 +25,6 @@ class="page-body page-fade-only"
 		<li class="active">
 			<strong>Nuevo</strong>
 		</li>
-			
 	</ol>
 	<hr>
 	<div class="well well-sm">
@@ -52,13 +51,23 @@ class="page-body page-fade-only"
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="nombre">Nombre o Razón Social</label>
-							<input type="text" class="form-control" id="nombre" name="nombre" maxlength="30" required>
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="entypo-users"></i>
+								</span>
+								<input type="text" class="form-control" id="nombre" name="nombre" maxlength="30" required>
+							</div>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="rfc">RFC</label>
-							<input type="text" class="form-control" id="rfc" name="rfc" maxlength="13" required pattern="^[a-zA-Z0-9]*$">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="entypo-vcard"></i>
+								</span>
+								<input type="text" class="form-control" id="rfc" name="rfc" maxlength="13" required pattern="^[a-zA-Z0-9]*$">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -68,13 +77,23 @@ class="page-body page-fade-only"
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="calle">Calle y Número</label>
-							<input type="text" class="form-control" id="calle" name="calle" maxlength="50">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="entypo-home"></i>
+								</span>
+								<input type="text" class="form-control" id="calle" name="calle" maxlength="50">
+							</div>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="colonia">Colonia</label>
-							<input type="text" class="form-control" id="colonia" name="colonia" maxlength="30">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="entypo-address"></i>
+								</span>
+								<input type="text" class="form-control" id="colonia" name="colonia" maxlength="30">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -82,13 +101,23 @@ class="page-body page-fade-only"
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="localidad">Localidad</label>
-							<input type="text" class="form-control" id="localidad" name="localidad" maxlength="30">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="entypo-map"></i>
+								</span>
+								<input type="text" class="form-control" id="localidad" name="localidad" maxlength="30">
+							</div>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="cp">Código Postal</label>
-						<input type="text" class="form-control" id="cp" name="cp" maxlength="5" pattern="^[0-9]{5}">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="entypo-location"></i>
+								</span>
+								<input type="text" class="form-control" id="cp" name="cp" maxlength="5" pattern="^[0-9]{5}">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -98,13 +127,23 @@ class="page-body page-fade-only"
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="telefono">Teléfono</label>
-							<input type="text" class="form-control" id="telefono" name="telefono" maxlength="10" pattern="^\d+$">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="entypo-phone"></i>
+								</span>
+								<input type="text" class="form-control" id="telefono" name="telefono" maxlength="10" pattern="^\d+$">
+							</div>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="celular">Celular</label>
-							<input type="text" class="form-control" id="celular" name="celular" maxlength="10" pattern="^\d+$">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="entypo-mobile"></i>
+								</span>
+								<input type="text" class="form-control" id="celular" name="celular" maxlength="10" pattern="^\d+$">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -112,13 +151,23 @@ class="page-body page-fade-only"
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="radio">Radio</label>
-							<input type="text" class="form-control" id="radio" name="radio" maxlength="10" pattern="^\d+$">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="fa fa-phone-square"></i>
+								</span>
+								<input type="text" class="form-control" id="radio" name="radio" maxlength="10" pattern="^\d+$">
+							</div>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<label for="email">eMail</label>
-							<input type="email" class="form-control" id="email" name="email" maxlength="50">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="entypo-mail"></i>
+								</span>
+								<input type="email" class="form-control" id="email" name="email" maxlength="50">
+							</div>
 						</div>
 					</div>
 				</div>
