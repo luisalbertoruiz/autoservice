@@ -3,7 +3,7 @@
 Autoservice
 @stop
 @section('body')
-class="page-body page-fade-only"
+class="page-body"
 @stop
 @section('content')
 <?php $user = Sentry::getUser() ?>
@@ -14,12 +14,12 @@ class="page-body page-fade-only"
 	<hr>
 	<ol class="breadcrumb bc-3">
 		<li>
-			<a href="#"><i class="entypo-home"></i>Home</a>
+			<a href="{{ URL::to('/')}}"><i class="entypo-home"></i>Home</a>
 		</li>
 		<li>
-			<a href="#">Administración</a>
+			<a href="{{ URL::to('/admin')}}">Administración</a>
 		</li>
-		<li class="active">
+		<li>
 			<a href="{{ URL::to('/cliente')}}">Clientes</a>
 		</li>
 		<li class="active">

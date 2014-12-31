@@ -230,7 +230,7 @@
 		if($.isFunction($.fn.peity))
 		{
 			$("span.pie").peity("pie", {colours: ['#0e8bcb', '#57b400'], width: 150, height: 25});
-			$("span.line").peity("line", {width: 150});
+			$(".panel span.line").peity("line", {width: 150});
 			$("span.bar").peity("bar", {width: 150});
 			
 			var updatingChart = $(".updating-chart").peity("line", { width: 150 })

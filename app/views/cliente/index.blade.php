@@ -3,7 +3,7 @@
 Autoservice
 @stop
 @section('body')
-class="page-body page-fade-only"
+class="page-body"
 @stop
 @section('content')
 <?php $user = Sentry::getUser() ?>
@@ -14,10 +14,10 @@ class="page-body page-fade-only"
 	<hr>
 	<ol class="breadcrumb bc-3">
 		<li>
-			<a href="#"><i class="entypo-home"></i>Home</a>
+			<a href="{{ URL::to('/')}}"><i class="entypo-home"></i>Home</a>
 		</li>
 		<li>
-			<a href="#">Administración</a>
+			<a href="{{ URL::to('/admin')}}">Administración</a>
 		</li>
 		<li class="active">
 			<strong>Clientes</strong>
@@ -48,12 +48,20 @@ class="page-body page-fade-only"
 				</tr>
 			@endforeach
 			</tbody>
-		</table>	
+		</table>
 	</div>
-</div>	
-{{ HTML::script('js/jquery.dataTables.min.js',array('id'=>'script-resource-7')) }}
-{{ HTML::script('js/dataTables.bootstrap.js',array('id'=>'script-resource-8')) }}
-{{ HTML::script('js/neon-custom.js',array('id'=>'script-resource-11')) }}
+</div>
+@stop
+@section('css')
+{{ HTML::style('js/datatables/responsive/css/datatables.responsive.css') }}
+@stop
+@section('js')
+{{ HTML::script('js/jquery.dataTables.min.js') }}
+{{ HTML::script('js/datatables/TableTools.min.js') }}
+{{ HTML::script('js/dataTables.bootstrap.js') }}
+{{ HTML::script('js/datatables/responsive/js/datatables.responsive.js') }}
+@stop
+@section('script')
 <script type="text/javascript">
 	jQuery(document).ready(function($)
 	{
@@ -69,3 +77,4 @@ class="page-body page-fade-only"
 	});
 </script>
 @stop
+

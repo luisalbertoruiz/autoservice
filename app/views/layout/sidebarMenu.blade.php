@@ -2,8 +2,8 @@
 	<header class="logo-env">
 		<!-- logo -->
 		<div class="logo">
-			<a href="../../../neon-x/dashboard/main/index.html">
-				{{ HTML::image('img/logo.png', '', array('style' => 'width:150px'))}}
+			<a href="#">
+				{{ HTML::image('src/logo.png', '', array('style' => 'width:170px'))}}
 			</a>
 		</div>
 				<!-- logo collapse icon -->
@@ -19,12 +19,12 @@
 			</a>
 		</div>
 	</header>
-	<ul id="main-menu" class="">
+	<ul id="main-menu" class="main-menu">
 		<li>
 			<a href="#"><i class="fa fa-user"></i><span>Usuarios</span></a>
 		</li>
 		<li class="">
-			<a href="#"><i class="fa fa-users"></i><span>Clientes</span></a>
+			<a href="{{ URL::to('/cliente')}}"><i class="fa fa-users"></i><span>Clientes</span></a>
 		</li>
 		<li>
 			<a href="#"><i class="fa fa-truck"></i><span>Vehículos</span></a>

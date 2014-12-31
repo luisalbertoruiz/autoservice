@@ -1,11 +1,11 @@
-<div class="row">
+<div class="row"><?php $user = Sentry::getUser() ?>
 	<!-- Profile Info and Notifications -->
 	<div class="col-md-8 col-sm-6 clearfix">
 		<ul class="user-info pull-left pull-none-xsm">
 			<!-- Profile Info -->
 			<li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-					{{ HTML::image('img/user.png', '', array('class' => 'img-circle', 'style' => 'width:45px'))}}
+					{{ HTML::image('src/'.$user->picture, '', array('class' => 'img-circle', 'style' => 'width:45px'))}}
 					{{ $user->first_name.' '.$user->last_name}}
 				</a>
 				<ul class="dropdown-menu">
@@ -19,7 +19,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="../../../neon-x/extra/calendar/index.html">
+						<a href="#">
 							<i class="entypo-calendar"></i>
 							Calendar
 						</a>
@@ -184,66 +184,4 @@
 		</ul>
 	</div>
 </div>
-@if(Session::has('alert-success'))
-	<script>
-		$(document).ready(function() {
-			var opts = {
-				"closeButton": true,
-				"debug": false,
-				"positionClass": "toast-top-right",
-				"onclick": null,
-				"showDuration": "300",
-				"hideDuration": "1000",
-				"timeOut": "5000",
-				"extendedTimeOut": "1000",
-				"showEasing": "swing",
-				"hideEasing": "linear",
-				"showMethod": "fadeIn",
-				"hideMethod": "fadeOut"
-			};
-			toastr.success("{{ Session::get('alert-success') }}", "¡Correcto!",opts);
-		});
-	</script>
-	@endif
-	@if(Session::has('alert-warning'))
-		<script>
-		$(document).ready(function() {
-			var opts = {
-				"closeButton": true,
-				"debug": false,
-				"positionClass": "toast-top-right",
-				"onclick": null,
-				"showDuration": "300",
-				"hideDuration": "1000",
-				"timeOut": "5000",
-				"extendedTimeOut": "1000",
-				"showEasing": "swing",
-				"hideEasing": "linear",
-				"showMethod": "fadeIn",
-				"hideMethod": "fadeOut"
-			};
-			toastr.warning("{{ Session::get('alert-warning') }}", "¡Atención!",opts);
-		});
-	</script>
-	@endif
-	@if(Session::has('alert-danger'))
-	<script>
-		$(document).ready(function() {
-			var opts = {
-				"closeButton": true,
-				"debug": false,
-				"positionClass": "toast-top-right",
-				"onclick": null,
-				"showDuration": "300",
-				"hideDuration": "1000",
-				"timeOut": "5000",
-				"extendedTimeOut": "1000",
-				"showEasing": "swing",
-				"hideEasing": "linear",
-				"showMethod": "fadeIn",
-				"hideMethod": "fadeOut"
-			};
-			toastr.error("{{ Session::get('alert-danger') }}", "¡Alerta!",opts);
-		});
-	</script>
-	@endif
+

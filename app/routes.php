@@ -11,6 +11,9 @@
 |
 */
 
+App::missing(function($exeption){
+	return Response::view('error.error404');
+});
 // Home
 Route::get ('/', 'HomeController@index');
 Route::get ('/contacto', 'HomeController@contacto');
@@ -53,6 +56,7 @@ Route::post ('/servicio/actualizar/{id}','ServiciosController@update');
 Route::get  ('/servicio/eliminar/{id}','ServiciosController@destroy');
 });
 Route::group(array('before' => 'Sentry|inGroup:users'), function(){
+Route::get  ('/admin','HomeController@admin');
 // Clientes
 Route::get  ('/cliente','ClientesController@index');
 Route::get  ('/cliente/mostrar/{id}','ClientesController@show');

@@ -17,27 +17,37 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
+		Sentry::logout();
 		return View::make('home.index');
 	}
 
 	public function contacto()
 	{
+		Sentry::logout();
 		return View::make('home.contacto');
 	}
 
 	public function nosotros()
 	{
+		Sentry::logout();
 		return View::make('home.nosotros');
 	}
 
 	public function servicio()
 	{
+		Sentry::logout();
 		return View::make('home.servicio');
 	}
 
 	public function login()
 	{
+		Sentry::logout();
 		return View::make('home.login');
+	}
+
+	public function admin()
+	{
+		return View::make('adminIndex');
 	}
 
 }

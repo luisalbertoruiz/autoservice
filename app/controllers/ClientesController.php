@@ -43,7 +43,7 @@ class ClientesController extends \BaseController {
 		if($validador->fails())
 		{
 			return Redirect::to('/cliente')
-			->with('flash_warning', 'Ya se encuentra registrado un cliente con ese RFC.');
+			->with('alert-danger', 'Ya se encuentra registrado un cliente con ese RFC.');
 		}
 		else
 		{

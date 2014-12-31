@@ -112,27 +112,27 @@ class UsersController extends \BaseController {
 
 		    // Authenticate the user
 		    $user = Sentry::authenticate($credentials, false);
-		    return Redirect::to('/cliente');
+		    return Redirect::to('/admin')->with('alert-success','Bienvenido al area de Administración.');
 		}
 		catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
 		{
-			return Redirect::to('/login')->with('mensaje','Nombre de Usuario requerido.');
+			return Redirect::to('/login')->with('alert-warning','Nombre de Usuario requerido.');
 		}
 		catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
 		{
-			return Redirect::to('/login')->with('mensaje','Contraseña requerida.');
+			return Redirect::to('/login')->with('alert-warning','Contraseña requerida.');
 		}
 		catch (Cartalyst\Sentry\Users\WrongPasswordException $e)
 		{
-			return Redirect::to('/login')->with('mensaje','Contraseña incorrecta, intentalo de nuevo.');
+			return Redirect::to('/login')->with('alert-warning','Contraseña incorrecta, intentalo de nuevo.');
 		}
 		catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
 		{
-			return Redirect::to('/login')->with('mensaje','El Usuario no fue encontrado.');
+			return Redirect::to('/login')->with('alert-warning','El Usuario no fue encontrado.');
 		}
 		catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
 		{
-			return Redirect::to('/login')->with('mensaje','El Usuario no esta activo.');
+			return Redirect::to('/login')->with('alert-warning','El Usuario no esta activo.');
 		}
 	}
 
@@ -145,7 +145,7 @@ class UsersController extends \BaseController {
 	public function logout()
 	{
 		Sentry::logout();
-		return Redirect::to('/login')->with('mensaje','Hasta luego.');
+		return Redirect::to('/login')->with('alert-success','Hasta luego.');
 	}
 
 }

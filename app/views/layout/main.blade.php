@@ -13,6 +13,7 @@
 		<!-- Bootstrap JavaScript -->
 		{{ HTML::script('js/bootstrap.js') }}
 		{{ HTML::script('js/script.js') }}
+		{{ HTML::script('js/toastr.js') }}
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
@@ -27,5 +28,6 @@
 			@yield('content')
 			@yield('footer')
 		</div>
+
 	</body>
 </html>

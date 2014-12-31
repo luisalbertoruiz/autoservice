@@ -7,30 +7,38 @@
 		<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 		<title>@yield('title')</title>
 		<!-- CSS -->
-		{{ HTML::style('css/jquery-ui.css',array('id'=>'style-resource-1')) }}
-		{{ HTML::style('css/font-icons/entypo/css/entypo.css',array('id'=>'style-resource-2')) }}
-		{{ HTML::style('css/font-icons/entypo/css/animation.css',array('id'=>'style-resource-3')) }}
-		{{ HTML::style('css/neon.css',array('id'=>'style-resource-5')) }}
-		{{ HTML::style('css/custom.css',array('id'=>'style-resource-6')) }}
-		{{ HTML::style('css/font-icons/font-awesome/css/font-awesome.min.css',array('id'=>'style-resource-7')) }}
+		{{ HTML::style('js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css') }}
+		{{ HTML::style('css/font-icons/entypo/css/entypo.css') }}
+		{{ HTML::style('css/font-icons/font-awesome/css/font-awesome.min.css') }}
+		{{ HTML::style('css/bootstrap.css') }}
+		{{ HTML::style('css/neon-core.css') }}
+		{{ HTML::style('css/neon-theme.css') }}
+		{{ HTML::style('css/neon-forms.css') }}
+		{{ HTML::style('css/custom.css') }}
 		<!-- JS -->
-		{{ HTML::script('js/jquery-1.10.2.min.js') }}
-		{{ HTML::script('js/gsap/main-gsap.js',array('id'=>'script-resource-1')) }}
-		{{ HTML::script('js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js',array('id'=>'script-resource-2')) }}
-		{{ HTML::script('js/bootstrap.min.js',array('id'=>'script-resource-3')) }}
-		{{ HTML::script('js/joinable.js',array('id'=>'script-resource-4')) }}
-		{{ HTML::script('js/resizeable.js',array('id'=>'script-resource-5')) }}
-		{{ HTML::script('js/neon-api.js',array('id'=>'script-resource-6')) }}
-		{{ HTML::script('js/toastr.js',array('id'=>'script-resource-7')) }}
-
+		{{ HTML::script('js/jquery-1.11.0.min.js') }}
+		<script>$.noConflict();</script>
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		<?php  setlocale(LC_TIME, "es_MX.UTF-8"); ?>
 	</head>
 	<body @yield('body') >
 		@yield('content')
+		@yield('css')
+		{{ HTML::script('js/gsap/main-gsap.js') }}
+		{{ HTML::script('js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js') }}
+		{{ HTML::script('js/bootstrap.js') }}
+		{{ HTML::script('js/joinable.js') }}
+		{{ HTML::script('js/resizeable.js') }}
+		{{ HTML::script('js/neon-api.js') }}
+		{{ HTML::script('js/toastr.js') }}
+		@include('layout.alertas')
+		@yield('js')
+		{{ HTML::script('js/neon-custom.js') }}
+		@yield('script')
 	</body>
 </html>
