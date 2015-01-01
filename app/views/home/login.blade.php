@@ -1,34 +1,70 @@
-@extends('layout.main')
+@extends('layout.admin')
 @section('title')
 Autoservice
 @stop
-@section('header')
-	@include('layout.header')
-@stop
-@section('navbar')
-	@include('layout.nav')
+@section('body')
+class="page-body login-page login-form-fall"
 @stop
 @section('content')
-	<div class="col-xs-12 col-sm-8 col-md-6 col-lg-6 col-sm-offset-2 col-md-offset-3">
-		<div class="panel panel-primary">
-			  
-			  <div class="panel-body">
-				  <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-sm-offset-2">
-							<legend>Inicia Seción</legend>
-						{{ Form::open(array('url' => 'loged')) }} 
-					    	<div class="form-group">
-								{{ Form::label("username", "Usuario") }}
-								{{ Form::text("username",'',array('class' => 'form-control')) }}<br>
-								{{ Form::label("password", "Password") }}
-								{{ Form::password("password",array('class' => 'form-control')) }}
-							</div><br>
-							{{ Form::button('Ingresar', array('type' => 'submit', 'class' => 'btn btn-success pull-right')) }}  
-						{{ Form::close() }}<br><br><br><br>
-					</div>
-			  </div>
+<div class="login-container">
+	<div class="login-header login-caret">
+		<div class="login-content">
+			<a href="index.html" class="logo">
+				<img src="assets/images/logo@2x.png" width="120" alt="" />
+			</a>
+			<p class="description">Inicia sesión para accesar!</p>
+			<!-- progress bar indicator -->
 		</div>
 	</div>
+	<div class="login-progressbar">
+		<div></div>
+	</div>
+	<div class="login-form">
+		<div class="login-content">
+			<form method="post" role="form" id="form_login" action="{{ URL::to('loged')}}">
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">
+							<i class="entypo-user"></i>
+						</div>
+						<input type="text" class="form-control" name="username" id="username" placeholder="Usuario" autocomplete="off" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon">
+							<i class="entypo-key"></i>
+						</div>
+						<input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" autocomplete="off" />
+					</div>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary btn-block btn-login">
+						<i class="entypo-login"></i>
+						Ingresar
+					</button>
+				</div>
+				<div class="form-group">
+					<a href="{{ URL::previous() }}">
+						<i class="entypo-reply"></i>
+						Regresar
+					</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 @stop
-@section('footer')
-	@include('layout.footer')
+@section('css')
+@stop
+@section('js')
+{{ HTML::script('js/jquery.validate.min.js') }}
+{{ HTML::script('js/neon-login.js') }}
+@stop
+@section('script')
+<script type="text/javascript">
+	$(document).ready(function($)
+	{
+	});
+</script>
 @stop

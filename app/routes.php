@@ -12,7 +12,13 @@
 */
 
 App::missing(function($exeption){
-	return Response::view('error.error404');
+return Response::view('error.error404');
+});
+App::after(function($request, $response)
+{
+$response->headers->set('Cache-Control','nocache, no-store, max-age=0, must-revalidate');
+$response->headers->set('Pragma','no-cache');
+$response->headers->set('Expires','Fri, 01 Jan 1990 00:00:00 GMT');
 });
 // Home
 Route::get ('/', 'HomeController@index');

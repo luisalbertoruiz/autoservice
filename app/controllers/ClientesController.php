@@ -74,7 +74,14 @@ class ClientesController extends \BaseController {
 	public function show($id)
 	{
 		$cliente = Cliente::find($id);
-		return View::make('cliente.show')->with('cliente',$cliente);
+		if (is_null ($cliente))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			return View::make('cliente.show')->with('cliente',$cliente);
+		}
 	}
 
 	/**
@@ -87,7 +94,14 @@ class ClientesController extends \BaseController {
 	public function edit($id)
 	{
 		$cliente = Cliente::find($id);
-		return View::make('cliente.edit')->with('cliente',$cliente);
+		if (is_null ($cliente))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			return View::make('cliente.edit')->with('cliente',$cliente);
+		}
 	}
 
 	/**
@@ -99,20 +113,27 @@ class ClientesController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$cliente   = Cliente::find($id);
-		$cliente->nombre    = Str::title(Str::lower(Input::get('nombre')));
-		$cliente->rfc       = Str::upper(Input::get('rfc'));
-		$cliente->calle     = Str::title(Str::lower(Input::get('calle')));
-		$cliente->colonia   = Str::title(Str::lower(Input::get('colonia')));
-		$cliente->localidad = Input::get('localidad');
-		$cliente->cp        = Input::get('cp');
-		$cliente->telefono  = Input::get('telefono');
-		$cliente->celular   = Input::get('celular');
-		$cliente->radio     = Input::get('radio');
-		$cliente->email     = Input::get('email');
-		$cliente->save();
-		return Redirect::to('/cliente')
-		->with('alert-success', 'Se ha editado el cliente.');
+		$cliente = Cliente::find($id);
+		if (is_null ($cliente))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$cliente->nombre    = Str::title(Str::lower(Input::get('nombre')));
+			$cliente->rfc       = Str::upper(Input::get('rfc'));
+			$cliente->calle     = Str::title(Str::lower(Input::get('calle')));
+			$cliente->colonia   = Str::title(Str::lower(Input::get('colonia')));
+			$cliente->localidad = Input::get('localidad');
+			$cliente->cp        = Input::get('cp');
+			$cliente->telefono  = Input::get('telefono');
+			$cliente->celular   = Input::get('celular');
+			$cliente->radio     = Input::get('radio');
+			$cliente->email     = Input::get('email');
+			$cliente->save();
+			return Redirect::to('/cliente/mostrar/'.$cliente->id)
+			->with('alert-success', 'Se ha editado el cliente.');
+		}
 	}
 
 	/**
@@ -125,8 +146,15 @@ class ClientesController extends \BaseController {
 	public function destroy($id)
 	{
 		$cliente = Cliente::find($id);
-		$cliente->delete();
-		return Redirect::to('/cliente')
-		->with('alert-danger', 'Se ha eliminado el cliente.');
+		if (is_null ($cliente))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$cliente->delete();
+			return Redirect::to('/cliente')
+			->with('alert-danger', 'Se ha eliminado el cliente.');
+		}
 	}
 }

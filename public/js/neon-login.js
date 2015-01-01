@@ -12,11 +12,11 @@ var neonLogin = neonLogin || {};
 	
 	$(document).ready(function()
 	{
+		var logurl = $('#form_login').attr('action');
 		neonLogin.$container = $("#form_login");
 		
-		
 		// Login Form & Validation
-		neonLogin.$container.validate({
+		/*neonLogin.$container.validate({
 			rules: {
 				username: {
 					required: true	
@@ -43,7 +43,7 @@ var neonLogin = neonLogin || {};
 				/* 
 					Updated on v1.1.4
 					Login form now processes the login data, here is the file: data/sample-login-form.php
-				*/
+				
 				
 				$(".login-page").addClass('logging-in'); // This will hide the login form and init the progress bar
 					
@@ -58,12 +58,11 @@ var neonLogin = neonLogin || {};
 					
 					// The form data are subbmitted, we can forward the progress to 70%
 					neonLogin.setPercentage(40 + random_pct);
-											
+										
 					// Send data to the server
 					$.ajax({
-						url: baseurl + 'data/sample-login-form.php',
+						url: logurl,
 						method: 'POST',
-						dataType: 'json',
 						data: {
 							username: $("input#username").val(),
 							password: $("input#password").val(),
@@ -76,7 +75,7 @@ var neonLogin = neonLogin || {};
 						{
 							// Login status [success|invalid]
 							var login_status = response.login_status;
-															
+								alert(login_status);							
 							// Form is fully completed, we update the percentage
 							neonLogin.setPercentage(100);
 							
@@ -115,7 +114,7 @@ var neonLogin = neonLogin || {};
 				}, 650);
 			}
 		});
-		
+		*/
 		
 		
 		

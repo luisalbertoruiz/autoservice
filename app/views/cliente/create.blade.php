@@ -153,7 +153,7 @@ class="page-body"
 							<label for="radio">Radio</label>
 							<div class="input-group">
 								<span class="input-group-addon">
-									<i class="fa fa-phone-square"></i>
+									<i class="entypo-network"></i>
 								</span>
 								<input type="text" class="form-control" id="radio" name="radio" maxlength="10" pattern="^\d+$">
 							</div>

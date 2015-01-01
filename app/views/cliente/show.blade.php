@@ -1,86 +1,144 @@
-@extends('layout.main')
+@extends('layout.admin')
 @section('title')
 Autoservice
 @stop
-@section('header')
-	@include('layout.header')
-@stop
-@section('navbar')
-	@include('layout.navadmin')
+@section('body')
+class="page-body"
 @stop
 @section('content')
-<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h2 class="panel-title"><span class="glyphicon glyphicon-user"> Cliente</h2>
-		</div>
-		<div class="panel-body">
-			<div class="table-responsive">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>{{ $cliente->nombre }}</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>ID:</td>
-							<td>{{$cliente->id}}</td>
-						</tr>
-						<tr>
-							<td>RFC:</td>
-							<td>{{$cliente->rfc}}</td>
-						</tr>
-						<tr>
-							<td>Calle y Número:</td>
-							<td>{{$cliente->calle}}</td>
-						</tr>
-						<tr>
-							<td>Colonia:</td>
-							<td>{{$cliente->colonia}}</td>
-						</tr>
-						<tr>
-							<td>Localidad:</td>
-							<td>{{$cliente->localidad}}</td>
-						</tr>
-						<tr>
-							<td>Código Postal:</td>
-							<td>{{$cliente->cp}}</td>
-						</tr>
-						<tr>
-							<td>Teléfono:</td>
-							<td>{{$cliente->telefono}}</td>
-						</tr>
-						<tr>
-							<td>Celular:</td>
-							<td>{{$cliente->celular}}</td>
-						</tr>
-						<tr>
-							<td>Radio:</td>
-							<td>{{$cliente->radio}}</td>
-						</tr>
-						<tr>
-							<td>eMail:</td>
-							<td>{{$cliente->email}}</td>
-						</tr>
-						<tr>
-							<td>Agregado:</td>
-							<td>{{$cliente->created_at}}</td>
-						</tr>
-						<tr>
-							<td>Actualizado:</td>
-							<td>{{$cliente->updated_at}}</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<a class="btn btn-success pull-right" href="{{ URL::to('admin/vehiculo/crear') }}">Agregar Vehículo</a>
-			<a class="btn btn-primary" href="{{ URL::previous() }}">Regresar</a>
+<div class="page-container">	
+	@include('layout.sidebarMenu')
+	<div class="main-content">
+		@include('layout.profilebar')
+		<hr>
+		<ol class="breadcrumb bc-3">
+			<li>
+				<a href="{{ URL::to('/')}}"><i class="entypo-home"></i>Home</a>
+			</li>
+			<li>
+				<a href="{{ URL::to('/admin')}}">Administración</a>
+			</li>
+			<li>
+				<a href="{{ URL::to('/cliente')}}">Clientes</a>
+			</li>
+			<li class="active">
+				<strong>Mostrar</strong>
+			</li>
+		</ol>
+		<hr>
+		<div class="profile-env">
+			<header class="row">
+				<div class="col-sm-2">
+					<a href="#" class="profile-picture">
+						{{ HTML::image('src/Hombre.png', '', array('class' => 'img-responsive img-circle','style' => 'max-width:115px'))}}
+					</a>
+				</div>
+				<div class="col-sm-7">
+					<ul class="profile-info-sections">
+						<li>
+							<div class="profile-name">
+								<strong>
+									<a href="#">{{ $cliente->nombre }}</a>
+									<a href="#" class="user-status is-online tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="Online"></a>
+									<!-- User statuses available classes "is-online", "is-offline", "is-idle", "is-busy" -->						</strong>
+								<span><a href="#">Nombre</a></span>
+							</div>
+						</li>
+						<li>
+							<div class="profile-stat">
+								<h3>{{ $cliente->rfc }}</h3>
+								<span><a href="#">RFC</a></span>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="col-sm-3">
+					<div class="profile-buttons">
+						<a href="{{URL::to('/cliente/editar/'.$cliente->id)}}" class="btn btn-default">
+							<i class="fa fa-edit"></i>
+							Editar
+						</a>
+						<a href="{{URL::to('/cliente/eliminar/'.$cliente->id)}}" class="btn btn-default">
+							<i class="glyphicon glyphicon-trash"></i>
+							Eliminar
+						</a>
+					</div>
+				</div>
+			</header>
+			<section class="profile-info-tabs">
+				<div class="row">
+					<div class="col-sm-offset-2 col-sm-10">
+						<ul class="user-details">
+							<li>
+								<i class="entypo-phone"></i>
+								&nbsp;
+								Telefono:&nbsp;&nbsp;
+								<strong>{{ $cliente->telefono }}</strong>
+							</li>
+							<li>
+								<i class="entypo-mobile"></i>
+								&nbsp;&nbsp;&nbsp;
+								Celular:&nbsp;&nbsp;&nbsp;
+								<strong>{{ $cliente->celular }}</strong>
+							</li>
+							<li>
+								<i class="entypo-network"></i>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								Radio:&nbsp;&nbsp;&nbsp;
+								<strong>{{ $cliente->radio }}</strong>
+							</li>
+							<li>
+								<i class="entypo-mail"></i>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								eMail:&nbsp;&nbsp;&nbsp;
+								<strong>{{ $cliente->email }}</strong>
+							</li>
+						</ul>
+						<!-- tabs for the profile links -->
+						<ul class="nav nav-tabs">
+							<li class="active"><a>Dirección</a></li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="row">
+					<div class="col-sm-offset-1 col-sm-11">
+						<ul class="user-details" style="list-style:none">
+							<li>
+								
+								<i class="entypo-home"></i>
+								&nbsp;
+								Calle y No:&nbsp;&nbsp;&nbsp;
+								<strong>{{ $cliente->calle }}</strong>
+							</li><br>
+							<li>
+								<i class="entypo-address"></i>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								Colonia:&nbsp;&nbsp;&nbsp;
+								<strong>{{ $cliente->colonia }}</strong>
+							</li><br>
+							<li>
+								<i class="entypo-map"></i>
+								&nbsp;&nbsp;
+								Localidad:&nbsp;&nbsp;&nbsp;
+								<strong>{{ $cliente->localidad }}</strong>
+							</li><br>
+							<li>
+								<i class="entypo-location"></i>
+								&nbsp;&nbsp;&nbsp;
+								Cod Pos:&nbsp;&nbsp;&nbsp;
+								<strong>{{ $cliente->cp }}</strong>
+							</li>
+						</ul>
+					</div>
+					<hr>
+					<div class="col-md-offset-7 col-md-5">
+						<a class="btn btn-primary btn-icon icon-left pull-right" href='{{ URL::previous() }}'><i class="entypo-reply"></i>Regresar</a>
+					</div>
+				</div>
+			</section>
 		</div>
 	</div>
 </div>
-@stop
-@section('footer')
-	@include('layout.footer')
 @stop
