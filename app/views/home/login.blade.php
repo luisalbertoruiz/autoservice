@@ -10,7 +10,7 @@ class="page-body login-page login-form-fall"
 	<div class="login-header login-caret">
 		<div class="login-content">
 			<a href="index.html" class="logo">
-				<img src="assets/images/logo@2x.png" width="120" alt="" />
+				{{ HTML::image('src/logo.png', '', array('style' => 'width:220px'))}}
 			</a>
 			<p class="description">Inicia sesión para accesar!</p>
 			<!-- progress bar indicator -->
@@ -45,7 +45,7 @@ class="page-body login-page login-form-fall"
 					</button>
 				</div>
 				<div class="form-group">
-					<a href="{{ URL::previous() }}">
+					<a href="{{ URL::to('/') }}">
 						<i class="entypo-reply"></i>
 						Regresar
 					</a>

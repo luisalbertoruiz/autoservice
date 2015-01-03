@@ -1,6 +1,6 @@
 <div class="row"><?php $user = Sentry::getUser() ?>
 	<!-- Profile Info and Notifications -->
-	<div class="col-md-8 col-sm-6 clearfix">
+	<div class="col-md-10 col-sm-10 clearfix">
 		<ul class="user-info pull-left pull-none-xsm">
 			<!-- Profile Info -->
 			<li class="profile-info dropdown"><!-- add class "pull-right" if you want to place this from right -->
@@ -166,16 +166,8 @@
 		</ul>
 	</div>
 	<!-- Raw Links -->
-	<div class="col-md-4 col-sm-6 clearfix pull-right">
+	<div class="col-md-2 col-sm-2 clearfix pull-right">
 		<ul class="list-inline links-list pull-right">
-			<li>
-				<a href="#" data-toggle="chat" data-animate="1" data-collapse-sidebar="1">
-					<i class="entypo-chat"></i>
-					Chat
-					<span class="badge badge-success chat-notifications-badge is-hidden">0</span>
-				</a>
-			</li>
-			<li class="sep"></li>
 			<li>
 				<a href="{{ URL::to('/logout') }}">
 					Cerrar Sesión <i class="entypo-logout right"></i>

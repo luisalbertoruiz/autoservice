@@ -1,43 +1,73 @@
-<div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
-    <div id="carousel-id" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carousel-id" data-slide-to="0" class=""></li>
-            <li data-target="#carousel-id" data-slide-to="1" class=""></li>
-            <li data-target="#carousel-id" data-slide-to="2" class="active"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="item">
-                <img alt="First slide" src="src/s02.jpg">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>Example headline.</h1>
-                        <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+<section class="slider-container" style="background-image: url({{ asset('src/bgsa.jpg') }});">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="slides">
+                    <!-- Slide 1 -->
+                    <div class="slide">
+                        <div class="slide-content">
+                            <h2>
+                                <small>Neon - Bootstrap 3</small>
+                                Dashboard &amp; Front-end
+                            </h2>
+                            <p>
+                                Neon &ndash; is flat admin template for multi-purpose usage built<br /> with the latest version of Bootstrap &ndash; 3.
+                            </p>
+                        </div>
+                        <div class="slide-image">
+                            <a href="#">
+                                {{ HTML::image('src/s01.jpg', '', array('class' => 'img-responsive'))}}
+                            </a>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="item">
-                <img alt="Second slide" src="src/s01.jpg">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>Another example headline.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <div class="slide-image">
+                            <a href="#">
+                                {{ HTML::image('src/s02.jpg', '', array('class' => 'img-responsive'))}}
+                            </a>
+                        </div>
+                        <div class="slide-content text-right">
+                            <h2>
+                                <small>Neon - Bootstrap 3</small>
+                                Powerful Admin Template
+                            </h2>
+                            <p>
+                                Designed for Bootstrap Framework, the theme works <br />
+                                perfectly on any device, you can use it on<br />
+                                 your smartphone, tablet or your laptop.
+                            </p>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="item active">
-                <img data-src="holder.js/900x500/auto/#555:#5a5a5a/text:Third slide" alt="Third slide" src="src/s03.jpg">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>One more for good measure.</h1>
-                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <div class="slide-content">
+                            <h2>
+                                <small>Neon - Bootstrap 3</small>
+                                Responsive &amp; Retina
+                            </h2>
+                            <p>
+                                Device type is not a problem if you use Neon theme for your application UI.<br />
+                                It's packed with latest Bootstrap framework and it's compatible for Large Screens, Tablets and Smartphones.
+                            </p>
+                        </div>
+                        <div class="slide-image">
+                            <a href="#">
+                                <{{ HTML::image('src/s03.jpg', '', array('class' => 'img-responsive'))}}
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Slider navigation -->
+                    <div class="slides-nextprev-nav">
+                        <a href="#" class="prev">
+                            <i class="entypo-left-open-mini"></i>
+                        </a>
+                        <a href="#" class="next">
+                            <i class="entypo-right-open-mini"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-        <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-        <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-    </div><br><br>
-</div>
+    </div>
+</section>

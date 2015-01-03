@@ -54,13 +54,11 @@ class="page-body"
 				</div>
 				<div class="col-sm-3">
 					<div class="profile-buttons">
-						<a href="{{URL::to('/cliente/editar/'.$cliente->id)}}" class="btn btn-default">
+						<a href="{{URL::to('/cliente/editar/'.$cliente->id)}}" class="btn btn-default tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="editar">
 							<i class="fa fa-edit"></i>
-							Editar
 						</a>
-						<a href="{{URL::to('/cliente/eliminar/'.$cliente->id)}}" class="btn btn-default">
+						<a href="{{URL::to('/cliente/eliminar/'.$cliente->id)}}" class="btn btn-default tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="eliminar">
 							<i class="glyphicon glyphicon-trash"></i>
-							Eliminar
 						</a>
 					</div>
 				</div>
@@ -134,7 +132,7 @@ class="page-body"
 					</div>
 					<hr>
 					<div class="col-md-offset-7 col-md-5">
-						<a class="btn btn-primary btn-icon icon-left pull-right" href='{{ URL::previous() }}'><i class="entypo-reply"></i>Regresar</a>
+						<a class="btn btn-primary btn-icon icon-left pull-right" href='{{ URL::to('/cliente')}}'><i class="entypo-reply"></i>Regresar</a>
 					</div>
 				</div>
 			</section>

@@ -1,87 +1,74 @@
-<nav class="navbar navbar-inverse" role="navigation">
-	<!-- Brand and toggle get grouped for better mobile display -->
-	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-		<a class="navbar-brand" href="{{ URL::to('/') }}"><span class="glyphicon glyphicon-home"> Home</a>
+<div class="site-header-container container">
+	<div class="row">
+		<div class="col-md-12">
+			<header class="site-header">
+				<section class="site-logo">
+					<a href="index.html">
+						{{ HTML::image('src/logo.png', '', array('style' => 'width:140px'))}}
+					</a>
+				</section>
+				<nav class="site-nav">
+					<ul class="main-menu hidden-xs" id="main-menu">
+						<li class="active">
+							<a href="{{URL::to('/')}}">
+								<span>Home</span>
+							</a>
+						</li>
+						<li>
+							<a href="{{URL::to('servicios')}}">
+								<span>Servicios</span>
+							</a>
+							<ul>
+								<li>
+									<a href="about.html">
+										<span>About Us</span>
+									</a>
+								</li>
+								<li class="active">
+									<a href="#">
+										<span>Active Menu Item</span>
+									</a>
+								</li>
+								<li>
+									<a href="gallery.html">
+										<span>Gallery</span>
+									</a>
+								</li>
+								<li>
+									<a href="blog-post.html">
+										<span>Blog Post</span>
+									</a>
+								</li>
+								<li>
+									<a href="portfolio-single.html">
+										<span>Portfolio Item</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="{{URL::to('nosotros')}}">
+								<span>Nosotros</span>
+							</a>
+						</li>
+						<li>
+							<a href="{{URL::to('contacto')}}">
+								<span>Contacto</span>
+							</a>
+						</li>
+						<li>
+							<a href="{{URL::to('login')}}">
+								<span>Login</span>
+							</a>
+						</li>
+					</ul>
+					<div class="visible-xs">
+						<a href="#" class="menu-trigger">
+							<i class="entypo-menu"></i>
+						</a>
+					</div>
+				</nav>
+			</header>
+		</div>
 	</div>
-
-	<!-- Collect the nav links, forms, and other content for toggling -->
-	<div class="collapse navbar-collapse navbar-ex1-collapse">
-		<ul class="nav navbar-nav">
-			<li><a href="{{ URL::to('/servicios') }}">Servicios</a></li>
-			<li><a href="{{ URL::to('/nosotros') }}">Nosotros</a></li>
-			<li><a href="{{ URL::to('/contacto') }}">Contacto</a></li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="{{ URL::to('/login') }}">Login</a></li>
-		</ul>
-	</div><!-- /.navbar-collapse -->
-</nav>
-@if(Session::has('alert-success'))
-<script>
-	$(document).ready(function() {
-		var opts = {
-			"closeButton": true,
-			"debug": false,
-			"positionClass": "toast-top-right",
-			"onclick": null,
-			"showDuration": "300",
-			"hideDuration": "1000",
-			"timeOut": "5000",
-			"extendedTimeOut": "1000",
-			"showEasing": "swing",
-			"hideEasing": "linear",
-			"showMethod": "fadeIn",
-			"hideMethod": "fadeOut"
-		};
-		toastr.success("{{ Session::get('alert-success') }}", "¡Correcto!",opts);
-	});
-</script>
-@endif
-@if(Session::has('alert-warning'))
-	<script>
-	$(document).ready(function() {
-		var opts = {
-			"closeButton": true,
-			"debug": false,
-			"positionClass": "toast-top-right",
-			"onclick": null,
-			"showDuration": "300",
-			"hideDuration": "1000",
-			"timeOut": "5000",
-			"extendedTimeOut": "1000",
-			"showEasing": "swing",
-			"hideEasing": "linear",
-			"showMethod": "fadeIn",
-			"hideMethod": "fadeOut"
-		};
-		toastr.warning("{{ Session::get('alert-warning') }}", "¡Atención!",opts);
-	});
-</script>
-@endif
-@if(Session::has('alert-danger'))
-<script>
-	$(document).ready(function() {
-		var opts = {
-			"closeButton": true,
-			"debug": false,
-			"positionClass": "toast-top-right",
-			"onclick": null,
-			"showDuration": "300",
-			"hideDuration": "1000",
-			"timeOut": "5000",
-			"extendedTimeOut": "1000",
-			"showEasing": "swing",
-			"hideEasing": "linear",
-			"showMethod": "fadeIn",
-			"hideMethod": "fadeOut"
-		};
-		toastr.error("{{ Session::get('alert-danger') }}", "¡Alerta!",opts);
-	});
-</script>
-@endif
+</div>

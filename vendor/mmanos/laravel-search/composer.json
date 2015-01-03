@@ -1,0 +1,29 @@
+{
+    "name": "mmanos/laravel-search",
+    "description": "A search package for Laravel 4.",
+    "keywords": ["laravel", "search", "lucene", "zendsearch", "elasticsearch", "full", "text"],
+    "authors": [
+        {
+            "name": "Mark Manos",
+            "email": "mark@airpac.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.*"
+    },
+    "suggest": {
+        "zendframework/zendsearch": "dev-master",
+        "elasticsearch/elasticsearch": "1.0.*@dev"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Mmanos\\Search\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "license": "MIT"
+}

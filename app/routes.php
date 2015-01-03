@@ -109,4 +109,20 @@ Route::get('addto_group', function()
     {
         // Group was not assigned
     }
+});
+
+Route::get('indexAdd', function()
+{
+	Search::insert(3, array(
+    'title' => 'My title',
+    'content' => 'peluchin',
+    'status' => 'published',
+	));
+	return 'create index con id ';
+});
+
+Route::get('search', function()
+{
+	$results = Search::search('content', 'peluch', array('fuzzy'=>true))->get();
+	return $results;
 });*/

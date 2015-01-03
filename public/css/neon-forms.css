@@ -1647,7 +1647,7 @@ body {
   font-family: "Helvetica Neue", Helvetica, "Noto Sans", sans-serif, Arial, sans-serif;
   font-size: 12px;
   line-height: 1.42857143;
-  color: #949494;
+  color: #696969;
   background-color: #ffffff;
 }
 input,
@@ -2093,7 +2093,7 @@ th {
   padding: 8px;
   line-height: 1.42857143;
   vertical-align: top;
-  border-top: 1px solid #ebebeb;
+  border-top: 1px solid #b7b7b7;
 }
 .table > thead > tr > th .progress,
 .table > tbody > tr > th .progress,
@@ -2426,7 +2426,7 @@ output {
   color: #555555;
   background-color: #ffffff;
   background-image: none;
-  border: 1px solid #ebebeb;
+  border: 1px solid #b7b7b7;
   border-radius: 3px;
   -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
   -moz-transition: border-color ease-in-out .15s, -moz-box-shadow ease-in-out .15s;
@@ -2436,7 +2436,7 @@ output {
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .form-control:focus {
-  border-color: #c8cdd7;
+  border-color: #929292;
   outline: 0;
   -moz-box-shadow:  0 2px 1px rgba(203, 208, 217, 0.08);
   -webkit-box-shadow:  0 2px 1px rgba(203, 208, 217, 0.08);

@@ -2,53 +2,89 @@
 @section('title')
 Autoservice
 @stop
-@section('header')
-	@include('layout.header')
-@stop
-@section('navbar')
-	@include('layout.nav')
-@stop
 @section('content')
-<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-	<div class="panel panel-primary">
-		  <div class="panel-heading">
-				<h3 class="panel-title"><span class="glyphicon glyphicon-pushpin"></span> Encuentranos en</h3>
-		  </div>
-		  <div class="panel-body">
-		 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.5932719847137!2d-99.0777!3d19.386756200000008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fdb5132d159b%3A0x5241bc85f5a402f8!2sPlaza+Mayor%2C+Doctor+Alfonso+Ortiz+Tirado%2C+Ciudad+de+M%C3%A9xico%2C+D.F.!5e0!3m2!1ses-419!2smx!4v1417377388021" width="100%" height="400" frameborder="0" style="border:0"></iframe><br><br>
-		  <p>Av. Plaza Mayor Nº 573, Col. Dr. Alfonso Ortiz Tirado Deleg. Iztapalapa, C.P. 09020 México, DF.</p>
-		  </div>
-	</div>	
-</div>
-<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-	<div class="panel panel-primary">
-		  <div class="panel-heading">
-				<h3 class="panel-title"><span class="glyphicon glyphicon-phone-alt"></span> Contactanos</h3>
-		  </div>
-		  <div class="panel-body">
-				<h4>Teléfonos:</h4>
-				<p>3329-89-02</p>
-				<p>3870-83-71</p>
-				<h4>eMail:</h4>
-				<p>autoservice-@hotmail.com</p>
-		  </div>
+<div class="wrap">
+@include('layout.nav')
+<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript">
+function initialize()
+{
+	var mapDiv = document.getElementById('map');
+	var map = new google.maps.Map(mapDiv, {
+		center: new google.maps.LatLng(19.386658, -99.077847),
+		zoom: 16,
+		mapTypeId: google.maps.MapTypeId.ROADMAP,
+		scrollwheel: false
+	});
+	new google.maps.Marker({
+		position: new google.maps.LatLng(19.386658, -99.077847),
+		map: map
+	});
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<section class="contact-map" id="map"></section>
+<section class="contact-container">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-7 sep">
+				<h4>Contactanos, escribenos un eMail!</h4>
+				<p>
+					To shewing another demands to. Marianne property cheerful informed at striking at. <br />
+					Clothes parlors however by cottage on.
+				</p>
+				<form class="contact-form" role="form" method="post" action="" enctype="application/x-www-form-urlencoded">
+					<div class="form-group">
+						<input type="text" name="name" class="form-control" placeholder="Nombre:" />
+					</div>
+					<div class="form-group">
+						<input type="text" name="email" class="form-control" placeholder="E-mail:" />
+					</div>
+					<div class="form-group">
+						<textarea class="form-control" name="message" placeholder="Mensage:" rows="6"></textarea>
+					</div>
+					<div class="form-group text-right">
+						<button class="btn btn-primary" name="send">Enviar</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-sm-offset-1 col-sm-4">
+				<div class="info-entry">
+					<h4>Dirección</h4>
+					<p>
+						Plaza Mayor, No. 120 <br />
+						Dr. Alfonso Ortiz Tirado<br />
+						Iztapalapa, Cd de México, D.F. <br>
+						C.P. 57896
+					</p>
+				</div>
+				<div class="info-entry">
+					<h4>Horarios:</h4>
+					<p>
+						09:00 - 18:00 <br />
+						Lunes a Viernes<br />
+						<br />
+						10:00 - 16:00 <br />
+						Sábados 
+					</p>
+				</div>
+				<div class="info-entry">
+					<h4>Teléfonos</h4>
+					<p>
+						3329-89-02<br />
+						3870-83-71
+					</p>
+				</div>
+				<div class="info-entry">
+					<h4>eMail</h4>
+					<p>
+						autoservice-@hotmail.com
+					</p>
+				</div>
+			</div>
+		</div>
 	</div>
-</div>
-<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
-	<div class="panel panel-primary">
-		  <div class="panel-heading">
-				<h3 class="panel-title"><span class="glyphicon glyphicon-phone-alt"></span> Contactanos</h3>
-		  </div>
-		  <div class="panel-body">
-				<h4>Teléfonos:</h4>
-				<p>3329-89-02</p>
-				<p>3870-83-71</p>
-				<h4>eMail:</h4>
-				<p>autoservice-@hotmail.com</p>
-		  </div>
-	</div>
-</div>
+</section>
+@include('layout.footer')
 @stop
-@section('footer')
-	@include('layout.footer')
-@stop
+

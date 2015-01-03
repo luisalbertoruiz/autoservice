@@ -173,13 +173,10 @@ class="page-body"
 				</div>
 				<br><br>
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<div class="form-group">
-							<a class="btn btn-danger btn-icon icon-left" href='{{ URL::previous() }}'><i class="entypo-cancel"></i>Cancelar</a>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
+							<a class="btn btn-danger btn-icon icon-left" href='{{ URL::previous() }}'><i class="entypo-cancel">
+							</i>Cancelar</a>
 							<button type="submit" class="btn btn-success btn-icon pull-right">Registrar<i class="entypo-check"></i></button>
 						</div>
 					</div>
