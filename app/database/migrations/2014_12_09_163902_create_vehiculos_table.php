@@ -15,15 +15,17 @@ class CreateVehiculosTable extends Migration {
 		Schema::create('vehiculos', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('id_cliente')->unsigned();
+			$table->integer('cliente_id')->unsigned();
 			$table->string('placas')->unique();
-			$table->string('marca');
-			$table->string('smarca');
+			$table->string('marca_id')->unsigned();
+			$table->string('smarca_id')->unsigned();
 			$table->string('modelo');
 			$table->string('color');
 			$table->string('serie')->unique();
 			$table->string('nota');
-			$table->foreign('id_cliente')->references('id')->on('clientes')->onDelete('cascade');
+			$table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');
+			$table->foreign('marca_id')->references('id')->on('marcas')->onDelete('cascade');
+			$table->foreign('smarca_id')->references('id')->on('smarcas')->onDelete('cascade');
 			$table->timestamps();
 		});
 	}

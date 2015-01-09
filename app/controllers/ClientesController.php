@@ -10,8 +10,9 @@ class ClientesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$clientes = DB::table('clientes')->get();
-		return View::make('cliente.index')->with('clientes',$clientes);
+		$clientes = Cliente::all();
+		return View::make('cliente.index')
+		->with('clientes',$clientes);
 	}
 
 	/**
@@ -80,7 +81,8 @@ class ClientesController extends \BaseController {
 		}
 		else
 		{
-			return View::make('cliente.show')->with('cliente',$cliente);
+			return View::make('cliente.show')
+			->with('cliente',$cliente);
 		}
 	}
 
@@ -100,7 +102,8 @@ class ClientesController extends \BaseController {
 		}
 		else
 		{
-			return View::make('cliente.edit')->with('cliente',$cliente);
+			return View::make('cliente.edit')
+			->with('cliente',$cliente);
 		}
 	}
 

@@ -1,0 +1,1 @@
+/var/www/autoservice/app/views/mecanicos/show.blade.php

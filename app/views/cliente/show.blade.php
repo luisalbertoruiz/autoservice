@@ -29,30 +29,33 @@ class="page-body"
 		<div class="profile-env">
 			<header class="row">
 				<div class="col-sm-2">
-					<a href="#" class="profile-picture">
+					<a class="profile-picture">
 						{{ HTML::image('src/Hombre.png', '', array('class' => 'img-responsive img-circle','style' => 'max-width:115px'))}}
 					</a>
 				</div>
-				<div class="col-sm-7">
+				<div class="col-sm-8">
 					<ul class="profile-info-sections">
 						<li>
-							<div class="profile-name">
-								<strong>
-									<a href="#">{{ $cliente->nombre }}</a>
-									<a href="#" class="user-status is-online tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="Online"></a>
-									<!-- User statuses available classes "is-online", "is-offline", "is-idle", "is-busy" -->						</strong>
-								<span><a href="#">Nombre</a></span>
+							<div class="profile-stat">
+								<h4>{{ $cliente->id }}</h4>
+								<span>ID</span>
 							</div>
 						</li>
 						<li>
 							<div class="profile-stat">
-								<h3>{{ $cliente->rfc }}</h3>
-								<span><a href="#">RFC</a></span>
+								<h4>{{ $cliente->nombre }}</h4>
+								<span>Nombre</span>
+							</div>
+						</li>
+						<li>
+							<div class="profile-stat">
+								<h4>{{ $cliente->rfc }}</h4>
+								<span>RFC</span>
 							</div>
 						</li>
 					</ul>
 				</div>
-				<div class="col-sm-3">
+				<div class="col-sm-2">
 					<div class="profile-buttons">
 						<a href="{{URL::to('/cliente/editar/'.$cliente->id)}}" class="btn btn-default tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="editar">
 							<i class="fa fa-edit"></i>

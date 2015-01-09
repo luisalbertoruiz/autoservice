@@ -10,8 +10,9 @@ class VehiculosController extends \BaseController {
 	 */
 	public function index()
 	{
-		$vehiculos = DB::table('vehiculos')->orderBy('placas')->paginate(5);
-		return View::make('vehiculo.index')->with('vehiculos',$vehiculos);
+		$vehiculos = Vehiculo::all();
+		return View::make('vehiculo.index')
+		->with('vehiculos',$vehiculos);
 	}
 
 	/**
@@ -23,7 +24,10 @@ class VehiculosController extends \BaseController {
 	public function create()
 	{
 		$marcas = Marca::all();
-		return View::make('vehiculo.create')->with('marcas',$marcas);
+		$clientes = Cliente::all();
+		return View::make('vehiculo.create')
+		->with('marcas',$marcas)
+		->with('clientes',$clientes);
 	}
 
 	/**
@@ -34,18 +38,35 @@ class VehiculosController extends \BaseController {
 	 */
 	public function store()
 	{
-		$vehiculo = new Vehiculo();
-		$vehiculo->id_cliente = Input::get('id_cliente');
-		$vehiculo->placas     = Input::get('placas');
-		$vehiculo->marca      = Input::get('marca');
-		$vehiculo->smarca     = Input::get('smarca');
-		$vehiculo->modelo     = Input::get('modelo');
-		$vehiculo->color      = Input::get('color');
-		$vehiculo->serie      = Str::upper(Input::get('serie'));
-		$vehiculo->nota       = Input::get('nota');
-		$vehiculo->save();
-		return Redirect::to('admin/vehiculo')
-		->with('flash_success', 'Se ha agregado correctamente el vehiculo.');
+		$entradas = array(
+			'placas' => Str::upper(Input::get('placas')),
+			'placas' => Str::upper(Input::get('serie'))
+			);
+		$reglas = array(
+            'placas' => 'required|unique:vehiculos',
+            'serie' => 'required|unique:vehiculos'
+        );
+        $validador = Validator::make(Input::all(), $reglas);
+		if($validador->fails())
+		{
+			return Redirect::to('/vehiculo')
+			->with('alert-danger', 'Ya se encuentra registrado un vehiculo con estas placas o No. de serie.');
+		}
+		else
+		{
+			$vehiculo = new Vehiculo();
+			$vehiculo->id_cliente = Input::get('id_cliente');
+			$vehiculo->placas     = Str::upper(Input::get('placas'));
+			$vehiculo->marca      = Input::get('marca');
+			$vehiculo->smarca     = Str::title(Str::lower(Input::get('smarca')));
+			$vehiculo->modelo     = Input::get('modelo');
+			$vehiculo->color      = Input::get('color');
+			$vehiculo->serie      = Str::upper(Input::get('serie'));
+			$vehiculo->nota       = Input::get('nota');
+			$vehiculo->save();
+			return Redirect::to('/vehiculo')
+			->with('alert-success', 'Se ha agregado el vehiculo.');
+		}
 	}
 
 	/**
@@ -58,7 +79,15 @@ class VehiculosController extends \BaseController {
 	public function show($id)
 	{
 		$vehiculo = Vehiculo::find($id);
-		return View::make('vehiculo.show')->with('vehiculo',$vehiculo);
+		if (is_null ($vehiculo))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			return View::make('vehiculo.show')
+			->with('vehiculo',$vehiculo);
+		}
 	}
 
 	/**
@@ -71,7 +100,15 @@ class VehiculosController extends \BaseController {
 	public function edit($id)
 	{
 		$vehiculo = Vehiculo::find($id);
-		return View::make('vehiculo.edit')->with('vehiculo',$vehiculo);
+		if (is_null ($vehiculo))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			return View::make('vehiculo.edit')
+			->with('vehiculo',$vehiculo);
+		}
 	}
 
 	/**
@@ -83,18 +120,25 @@ class VehiculosController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$vehiculo   = Vehiculo::find($id);
-		$vehiculo->id_cliente = Input::get('id_cliente');
-		$vehiculo->placas     = Input::get('placas');
-		$vehiculo->numero     = Input::get('numero');
-		$vehiculo->marca      = Input::get('marca');
-		$vehiculo->smarca     = Input::get('smarca');
-		$vehiculo->color      = Input::get('color');
-		$vehiculo->serie      = Input::get('serie');
-		$vehiculo->nota       = Input::get('nota');
-		$vehiculo->save();
-		return Redirect::to('admin/vehiculo')
-		->with('flash_warning', 'Se ha editado correctamente el vehiculo.');
+		$vehiculo = Vehiculo::find($id);
+		if (is_null ($vehiculo))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$vehiculo->id_cliente = Input::get('id_cliente');
+			$vehiculo->placas     = Str::upper(Input::get('placas'));
+			$vehiculo->marca      = Input::get('marca');
+			$vehiculo->smarca     = Str::title(Str::lower(Input::get('smarca')));
+			$vehiculo->modelo     = Input::get('modelo');
+			$vehiculo->color      = Input::get('color');
+			$vehiculo->serie      = Str::upper(Input::get('serie'));
+			$vehiculo->nota       = Input::get('nota');
+			$vehiculo->save();
+			return Redirect::to('/vehiculo/mostrar/'.$vehiculo->id)
+			->with('alert-success', 'Se ha editado el vehiculo.');
+		}
 	}
 
 	/**
@@ -107,9 +151,28 @@ class VehiculosController extends \BaseController {
 	public function destroy($id)
 	{
 		$vehiculo = Vehiculo::find($id);
-		$vehiculo->delete();
-		return Redirect::to('admin/vehiculo')
-		->with('flash_danger', 'Se ha eliminado correctamente el vehiculo.');
+		if (is_null ($vehiculo))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$vehiculo->delete();
+			return Redirect::to('/vehiculo')
+			->with('alert-danger', 'Se ha eliminado el vehiculo.');
+		}
 	}
 
+	/**
+	 * Remove the specified resource from storage.
+	 * DELETE /vehiculos/{id}
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function dropdown($id)
+	{
+		$smarcas = Marca::find($id)->smarcas;
+		return $smarcas->lists('nombre','id');
+	}
 }

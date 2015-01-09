@@ -36,6 +36,14 @@ Route::post ('/cliente/guardar','ClientesController@store');
 Route::get  ('/cliente/editar/{id}','ClientesController@edit');
 Route::post ('/cliente/actualizar/{id}','ClientesController@update');
 Route::get  ('/cliente/eliminar/{id}','ClientesController@destroy');
+// Proveedores
+Route::get  ('/proveedor','ProveedoresController@index');
+Route::get  ('/proveedor/crear','ProveedoresController@create');
+Route::post ('/proveedor/guardar','ProveedoresController@store');
+Route::get  ('/proveedor/mostrar/{id}','ProveedoresController@show');
+Route::get  ('/proveedor/editar/{id}','ProveedoresController@edit');
+Route::post ('/proveedor/actualizar/{id}','ProveedoresController@update');
+Route::get  ('/proveedor/eliminar/{id}','ProveedoresController@destroy');
 // Vehiculos
 Route::get  ('/vehiculo','VehiculosController@index');
 Route::get  ('/vehiculo/crear','VehiculosController@create');
@@ -60,6 +68,8 @@ Route::get  ('/servicio/mostrar/{id}','ServiciosController@show');
 Route::get  ('/servicio/editar/{id}','ServiciosController@edit');
 Route::post ('/servicio/actualizar/{id}','ServiciosController@update');
 Route::get  ('/servicio/eliminar/{id}','ServiciosController@destroy');
+
+Route::get  ('/dropdown/{id}', 'VehiculosController@dropdown');
 });
 Route::group(array('before' => 'Sentry|inGroup:users'), function(){
 Route::get  ('/admin','HomeController@admin');
@@ -67,50 +77,46 @@ Route::get  ('/admin','HomeController@admin');
 Route::get  ('/cliente','ClientesController@index');
 Route::get  ('/cliente/mostrar/{id}','ClientesController@show');
 });
-/*Route::get('create_user', function()
-{
-	$user = Sentry::createUser([
-		'email' => 'user',
-		'username' => 'user',
-		'password' => 'user',
-		'first_name'=>'user',
-		'last_name'=>'user',
-		'activated'=> 1,
-		]);
-	return 'create usuario con id ';
-});
 
-Route::get('create_group', function()
+Route::get('sentry', function()
 {
-	$group = Sentry::createGroup([
-		'name' => 'usuario',
-		'permissions'=>[
-		'admin' => 0,
-		'users' => 1,
+	$groupA = Sentry::createGroup([
+		'name'        => 'administrador',
+		'permissions' =>[
+		'admin'       => 1,
+		'users'       => 1,
 		],
 		]);
-	return 'create grupo ok ';
+	$groupU = Sentry::createGroup([
+		'name'        => 'usuario',
+		'permissions' =>[
+		'admin'       => 0,
+		'users'       => 1,
+		],
+		]);
+	$admin = Sentry::createUser([
+		'email'      => 'admin@sga.com',
+		'username'   => 'admin',
+		'password'   => 'admin',
+		'first_name' => 'Administrador',
+		'last_name'  => 'General',
+		'activated'  => 1,
+		]);
+	$user = Sentry::createUser([
+		'email'      => 'user@sga.com',
+		'username'   => 'user',
+		'password'   => 'user',
+		'first_name' => 'Usuario',
+		'last_name'  => 'Estandar',
+		'activated'  => 1,
+		]);
+	$admin->addGroup($groupA);
+	$user->addGroup($groupU);
+	
+	return 'todo se genero correctamente';
 });
 
-Route::get('addto_group', function()
-{
-    // Find the user using the user id
-    $user = Sentry::findUserById(3);
-
-    // Find the group using the group id
-    $adminGroup = Sentry::findGroupById(2);
-
-    // Assign the group to the user
-    if ($user->addGroup($adminGroup))
-    {
-        return 'agregado a grupo ok ';
-    }
-    else
-    {
-        // Group was not assigned
-    }
-});
-
+/*
 Route::get('indexAdd', function()
 {
 	Search::insert(3, array(

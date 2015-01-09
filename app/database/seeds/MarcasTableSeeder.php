@@ -29,7 +29,8 @@ class MarcasTableSeeder extends Seeder {
 				array('nombre' => 'Suzuki'),
 				array('nombre' => 'Toyota'),
 				array('nombre' => 'VW')  
-        ));
+			)
+		);
 	}
 
 }

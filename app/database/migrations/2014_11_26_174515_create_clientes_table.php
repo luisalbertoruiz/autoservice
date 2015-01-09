@@ -27,6 +27,8 @@ class CreateClientesTable extends Migration {
 			$table->string('email');
 			$table->timestamps();
 		});
+		$statement = "ALTER TABLE clientes AUTO_INCREMENT = 1001;";
+        DB::unprepared($statement);
 	}
 
 

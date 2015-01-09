@@ -1,52 +1,83 @@
-@extends('layout.main')
+@extends('layout.admin')
 @section('title')
-Autoservice
+SGA | Vehículos
 @stop
-@section('header')
-	@include('layout.header')
-@stop
-@section('navbar')
-	@include('layout.navadmin')
+@section('body')
+class="page-body"
 @stop
 @section('content')
-<div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 col-md-offset-1 col-lg-offset-2">
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			<h2 class="panel-title"><span class="glyphicon glyphicon-user"></span> Vehículos<span><input name="{{ URL::to('/admin/vehiculo/buscar') }}" class="pull-right" type="text" placeholder="buscar" id="buscarajax"></span><span class="glyphicon glyphicon-search pull-right">&nbsp;</span></h2> 
-		</div>
-		<div class="panel-body">
-		{{ HTML::link(URL::to('/admin/vehiculo/crear'), 'Nuevo Vehículo', array('class' => 'btn btn-primary btn-sm pull-right')) }}
-			<div class="table-responsive">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Dueño</th>
-							<th>Placas</th>
-							<th></th>
-							<th></th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						@foreach($vehiculos as $vehiculo)
-						<tr>
-							<td>{{ $vehiculo->id }}</td>
-							<td>{{ $vehiculo->placas }}</td>
-							<td>{{ $vehiculo->dueño }}</td>
-							<td>{{ HTML::link(URL::to('/admin/vehiculo/mostrar/'.$vehiculo->id), 'Ver', array('class' => 'btn btn-success btn-xs')) }}</td>
-							<td>{{ HTML::link(URL::to('/admin/vehiculo/editar/'.$vehiculo->id), 'Editar', array('class' => 'btn btn-warning btn-xs')) }}</td>
-							<td>{{ HTML::link(URL::to('/admin/vehiculo/eliminar/'.$vehiculo->id), 'Eliminar', array('class' => 'btn btn-danger btn-xs')) }}</td>
-						</tr>
-					@endforeach
-					</tbody>
-				</table>
-				{{ $vehiculos->links() }}
-			</div>
-		</div>
+<?php $user = Sentry::getUser() ?>
+<div class="page-container">	
+	@include('layout.sidebarMenu')
+	<div class="main-content">
+	@include('layout.profilebar')
+	<hr>
+	<ol class="breadcrumb bc-3">
+		<li>
+			<a href="{{ URL::to('/')}}"><i class="entypo-home"></i>Home</a>
+		</li>
+		<li>
+			<a href="{{ URL::to('/admin')}}">Administración</a>
+		</li>
+		<li class="active">
+			<strong>Vehiculos</strong>
+		</li>
+		<a href="{{ URL::to('/vehiculo/crear')}}" class="btn btn-blue btn-icon pull-right">Nuevo<i class="entypo-plus"></i></a>
+	</ol>
+	<hr>
+		<table class="table table-bordered datatable" id="tabla">
+			<thead>
+				<tr>
+					<th>Placas</th>
+					<th>Sub-Marca</th>
+					<th>Color</th>
+					<th>Dueño</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach($vehiculos as $vehiculo)
+				<tr>
+					<td>{{ $vehiculo->placas }}</td>
+					<td>{{ $vehiculo->smarca }}</td>
+					<td>{{ $vehiculo->color }}</td>
+					<td>{{ $vehiculo->cliente->nombre }}</td>
+
+					<td>
+					<a href="{{URL::to('/vehiculo/mostrar/'.$vehiculo->id)}}" class="btn btn-success btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="mostrar"><i class="glyphicon glyphicon-eye-open"></i></a>
+					<a href="{{URL::to('/vehiculo/editar/'.$vehiculo->id)}}" class="btn btn-orange btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="editar"><i class="fa fa-edit"></i></a>
+					<a href="{{URL::to('/vehiculo/eliminar/'.$vehiculo->id)}}" class="btn btn-danger btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="eliminar"><i class="glyphicon glyphicon-trash"></i></a>
+					</td>
+				</tr>
+			@endforeach
+			</tbody>
+		</table>
 	</div>
 </div>
 @stop
-@section('footer')
-	@include('layout.footer')
+@section('css')
+{{ HTML::style('js/datatables/responsive/css/datatables.responsive.css') }}
 @stop
+@section('js')
+{{ HTML::script('js/jquery.dataTables.min.js') }}
+{{ HTML::script('js/datatables/TableTools.min.js') }}
+{{ HTML::script('js/dataTables.bootstrap.js') }}
+{{ HTML::script('js/datatables/responsive/js/datatables.responsive.js') }}
+@stop
+@section('script')
+<script type="text/javascript">
+	jQuery(document).ready(function($)
+	{
+		$("#tabla").dataTable({
+			"sPaginationType": "bootstrap",
+			"aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
+			"bStateSave": true
+		});
+		
+		$(".dataTables_wrapper select").select2({
+			minimumResultsForSearch: -1
+		});
+	});
+</script>
+@stop
+

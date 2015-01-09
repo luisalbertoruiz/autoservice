@@ -16,7 +16,7 @@
                         </div>
                         <div class="slide-image">
                             <a href="#">
-                                {{ HTML::image('src/s01.jpg', '', array('class' => 'img-responsive'))}}
+                                {{ HTML::image('src/s01.jpg', '', array('class' => 'img-responsive','style'=> 'max-width:500px'))}}
                             </a>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                     <div class="slide">
                         <div class="slide-image">
                             <a href="#">
-                                {{ HTML::image('src/s02.jpg', '', array('class' => 'img-responsive'))}}
+                                {{ HTML::image('src/s02.jpg', '', array('class' => 'img-responsive','style'=> 'max-width:500px'))}}
                             </a>
                         </div>
                         <div class="slide-content text-right">
@@ -53,7 +53,7 @@
                         </div>
                         <div class="slide-image">
                             <a href="#">
-                                <{{ HTML::image('src/s03.jpg', '', array('class' => 'img-responsive'))}}
+                                <{{ HTML::image('src/s03.jpg', '', array('class' => 'img-responsive','style'=> 'max-width:500px'))}}
                             </a>
                         </div>
                     </div>

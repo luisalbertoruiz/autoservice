@@ -97,7 +97,7 @@ class="page-body page-fade-only"
 				</a>
 			</div>
 			<div class="col-sm-3">
-				<a href="{{ URL::to('/cliente') }}">
+				<a href="{{ URL::to('/proveedor') }}">
 					<div class="tile-title tile-green">
 						<div class="icon">
 							<i class="fa fa-shopping-cart"></i>

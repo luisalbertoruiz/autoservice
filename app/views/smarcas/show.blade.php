@@ -1,0 +1,1 @@
+/var/www/autoservice/app/views/smarcas/show.blade.php
