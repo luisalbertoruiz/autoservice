@@ -2,6 +2,7 @@
 
 class Vehiculo extends \Eloquent {
 	protected $fillable = [];
+	protected $softDelete = true;
 	public function cliente ()
 	{
 		return $this->belongsTo('Cliente');

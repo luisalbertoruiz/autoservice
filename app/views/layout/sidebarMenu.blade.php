@@ -21,7 +21,7 @@
 	</header>
 	<ul id="main-menu" class="main-menu">
 		<li>
-			<a href="{{ URL::to('/usuarios')}}"><i class="entypo-user"></i><span>Usuarios</span></a>
+			<a href="{{ URL::to('/usuarios')}}"><i class="fa fa-user"></i><span>Usuarios</span></a>
 		</li>
 		<li class="">
 			<a href="{{ URL::to('/clientes')}}"><i class="fa fa-users"></i><span>Clientes</span></a>
@@ -36,7 +36,7 @@
 					<a href="{{ URL::to('/proveedores')}}"><i class="fa fa-shopping-cart"></i><span>Proveedores</span></a>
 				</li>
 				<li>
-					<a href="{{ URL::to('/refacciones')}}"><i class="fa fa-gears"></i><span>Refacciones</span></a>
+					<a href="{{ URL::to('/refacciones')}}"><i class="fa fa-code-fork"></i><span>Refacciones</span></a>
 				</li>
 			</ul>
 		</li>
@@ -53,22 +53,22 @@
 			</ul>
 		</li>
 		<li>
-			<a href=""><i class="fa fa-tachometer"></i><span>Catálogos</span></a>
+			<a href=""><i class="fa fa-list"></i><span>Catálogos</span></a>
 			<ul>
 				<li>
-					<a href="{{ URL::to('/servicios')}}"><i class="fa fa-file-text"></i><span>Servicios</span></a>
+					<a href="{{ URL::to('/servicios')}}"><i class="fa fa-cog"></i><span>Servicios</span></a>
 				</li>
 				<li>
-					<a href="{{ URL::to('/sservicios')}}"><i class="fa fa-file-text"></i><span>subServicios</span></a>
+					<a href="{{ URL::to('/sservicios')}}"><i class="fa fa-cogs"></i><span>subServicios</span></a>
 				</li>
 				<li>
-					<a href="{{ URL::to('/marcas')}}"><i class="fa fa-dollar"></i><span>Marcas</span></a>
+					<a href="{{ URL::to('/marcas')}}"><i class="fa fa-bookmark"></i><span>Marcas</span></a>
 				</li>
 				<li>
-					<a href="{{ URL::to('/smarcas')}}"><i class="fa fa-file-text"></i><span>subMarcas</span></a>
+					<a href="{{ URL::to('/smarcas')}}"><i class="fa fa-bookmark-o"></i><span>subMarcas</span></a>
 				</li>
 				<li>
-					<a href="{{ URL::to('/colores')}}"><i class="fa fa-file-text"></i><span>Colores</span></a>
+					<a href="{{ URL::to('/colores')}}"><i class="fa fa-tint"></i><span>Colores</span></a>
 				</li>
 			</ul>
 		</li>

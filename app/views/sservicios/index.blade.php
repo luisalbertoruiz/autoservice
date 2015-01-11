@@ -20,7 +20,7 @@ class="page-body"
 			<a href="{{ URL::to('/admin')}}">Administración</a>
 		</li>
 		<li>
-			<a href="{{ URL::to('/admin')}}">Otros</a>
+			<a href="{{ URL::to('/admin')}}">Catálogos</a>
 		</li>
 		<li class="active">
 			<strong>Sub-Servicios</strong>

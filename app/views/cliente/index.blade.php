@@ -43,12 +43,38 @@ class="page-body"
 					<td>
 					<a href="{{URL::to('/clientes/mostrar/'.$cliente->id)}}" class="btn btn-success btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="mostrar"><i class="glyphicon glyphicon-eye-open"></i></a>
 					<a href="{{URL::to('/clientes/editar/'.$cliente->id)}}" class="btn btn-orange btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="editar"><i class="fa fa-edit"></i></a>
-					<a href="{{URL::to('/clientes/eliminar/'.$cliente->id)}}" class="btn btn-danger btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="eliminar"><i class="glyphicon glyphicon-trash"></i></a>
+					<a href="javascript:;" onclick="eliminaRegistro('{{URL::to('/clientes/eliminar/'.$cliente->id)}}');" class="btn btn-danger btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="eliminar"><i class="glyphicon glyphicon-trash"></i></a>
 					</td>
 				</tr>
 			@endforeach
 			</tbody>
 		</table>
+	</div>
+</div>
+<script type="text/javascript">
+function eliminaRegistro(href)
+{
+	jQuery('#eliminarR').find('.modal-footer').append('<a href="'+href+'" class="btn btn-danger">Eliminar</button></a>');
+	jQuery('#eliminarR').modal('show', {backdrop: 'static'});
+	
+}
+</script>
+<div class="modal fade" id="eliminarR">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3 class="modal-title">¡Cuidado!</h3>
+			</div>
+			
+			<div class="modal-body">
+				<h4>Estas seguro de eliminar el registro</h4>
+			</div>
+			
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+			</div>
+		</div>
 	</div>
 </div>
 @stop

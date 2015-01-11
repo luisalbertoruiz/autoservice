@@ -20,7 +20,7 @@ class="page-body"
 			<a href="{{ URL::to('/admin')}}">Administración</a>
 		</li>
 		<li>
-			<a href="{{ URL::to('/admin')}}">Otros</a>
+			<a href="{{ URL::to('/admin')}}">Catálogos</a>
 		</li>
 		<li class="active">
 			<strong>Colores</strong>
@@ -41,7 +41,7 @@ class="page-body"
 					<td>{{ $color->nombre }}</td>
 					<td>
 					<a href="javascript:;" class="btn btn-orange btn-xs tooltip-primary" onclick="editarColor('{{URL::to('/colores/editar/'.$color->id)}}');" data-toggle="tooltip" data-placement="top" data-original-title="editar"><i class="fa fa-edit"></i></a>
-					<a href="{{URL::to('/colores/eliminar/'.$color->id)}}" class="btn btn-danger btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="eliminar"><i class="glyphicon glyphicon-trash"></i></a>
+					<a href="javascript:;" onclick="eliminaRegistro('{{URL::to('/colores/eliminar/'.$color->id)}}');" class="btn btn-danger btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="eliminar"><i class="glyphicon glyphicon-trash"></i></a>
 					</td>
 				</tr>
 			@endforeach
@@ -73,6 +73,12 @@ function editarColor(href)
 		}
 	});
 }
+function eliminaRegistro(href)
+{
+	jQuery('#eliminarR').find('.modal-footer').append('<a href="'+href+'" class="btn btn-danger">Eliminar</button></a>');
+	jQuery('#eliminarR').modal('show', {backdrop: 'static'});
+	
+}
 </script>
 <div class="modal fade" id="modal-7">
 	<div class="modal-dialog">
@@ -96,6 +102,24 @@ function editarColor(href)
 			</div>
 			<div class="modal-body">
 				Content is loading...
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="eliminarR">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3 class="modal-title">¡Cuidado!</h3>
+			</div>
+			
+			<div class="modal-body">
+				<h4>Estas seguro de eliminar el registro</h4>
+			</div>
+			
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 			</div>
 		</div>
 	</div>
