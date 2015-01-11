@@ -4,6 +4,6 @@ class Smarca extends \Eloquent {
 	protected $fillable = [];
 	public function marca ()
 	{
-		return $this->belongsTo('Marcas');
+		return $this->belongsTo('Marca');
 	}
 }

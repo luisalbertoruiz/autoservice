@@ -10,7 +10,9 @@ class ServiciosController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$servicios = Servicio::all();
+		return View::make('servicio.index')
+		->with('servicios',$servicios);
 	}
 
 	/**
@@ -21,7 +23,7 @@ class ServiciosController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('servicio.create');
 	}
 
 	/**
@@ -32,7 +34,14 @@ class ServiciosController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+        
+		$servicio = new Servicio();
+		$servicio->catalogo_id = 3;
+		$servicio->nombre    = Str::title(Str::lower(Input::get('nombre')));
+		$servicio->save();
+		return Redirect::to('/servicios')
+		->with('alert-success', 'Se ha agregado la servicio.');
+		
 	}
 
 	/**
@@ -44,7 +53,16 @@ class ServiciosController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$servicio = Servicio::find($id);
+		if (is_null ($servicio))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			return View::make('servicio.show')
+			->with('servicio',$servicio);
+		}
 	}
 
 	/**
@@ -56,7 +74,16 @@ class ServiciosController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$servicio = Servicio::find($id);
+		if (is_null ($servicio))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			return View::make('servicio.edit')
+			->with('servicio',$servicio);
+		}
 	}
 
 	/**
@@ -68,7 +95,18 @@ class ServiciosController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$servicio = Servicio::find($id);
+		if (is_null ($servicio))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$servicio->nombre    = Str::title(Str::lower(Input::get('nombre')));
+			$servicio->save();
+			return Redirect::to('/servicios')
+			->with('alert-success', 'Se ha editado la servicio.');
+		}
 	}
 
 	/**
@@ -80,7 +118,16 @@ class ServiciosController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$servicio = Servicio::find($id);
+		if (is_null ($servicio))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$servicio->delete();
+			return Redirect::to('/servicios')
+			->with('alert-danger', 'Se ha eliminado la servicio.');
+		}
 	}
-
 }

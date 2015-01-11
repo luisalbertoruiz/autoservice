@@ -97,70 +97,7 @@ class DatabaseSeeder extends Seeder {
 				)
 			)
 		);
-		DB::table('vehiculos')->insert(
-			array(
-				array(
-					'cliente_id' => '1001',
-					'placas'     => 'MET1245',
-					'marca'      => 'Dodge',
-					'smarca'     => 'Caliber',
-					'modelo'     => '2011',
-					'color'      => 'Rojo',
-					'serie'      => 'QWERTYUIOP45698LK',
-					'nota'       => ''
-				),
-				array(
-					'cliente_id' => '1002',
-					'placas'     => '235SAT',
-					'marca'      => 'Chevrolet',
-					'smarca'     => 'Camaro',
-					'modelo'     => '2014',
-					'color'      => 'Amarillo',
-					'serie'      => 'LKINHGVFRE45698LK',
-					'nota'       => ''
-				),
-				array(
-					'cliente_id' => '1002',
-					'placas'     => 'RAL5689',
-					'marca'      => 'Fiat',
-					'smarca'     => 'Palio',
-					'modelo'     => '2001',
-					'color'      => 'Gris',
-					'serie'      => 'K5OINBFTLA45698LK',
-					'nota'       => ''
-				),
-				array(
-					'cliente_id' => '1003',
-					'placas'     => 'GHJ7856',
-					'marca'      => 'Ford',
-					'smarca'     => 'Mustang',
-					'modelo'     => '2010',
-					'color'      => 'Negro',
-					'serie'      => 'KLASBEYHDB45698LK',
-					'nota'       => ''
-				),
-				array(
-					'cliente_id' => '1004',
-					'placas'     => 'IOP2345',
-					'marca'      => 'Nissan',
-					'smarca'     => 'Tsuru',
-					'modelo'     => '2004',
-					'color'      => 'Plata',
-					'serie'      => 'PKNGTRESAD45698LK',
-					'nota'       => ''
-				),
-				array(
-					'cliente_id' => '1005',
-					'placas'     => '789RTY',
-					'marca'      => 'Toyota',
-					'smarca'     => 'Cambry',
-					'modelo'     => '2011',
-					'color'      => 'Amarillo',
-					'serie'      => 'ZXCVBNMJHG45698LK',
-					'nota'       => ''
-				)
-			)
-		);
+		
 		DB::table('proveedores')->insert(
 			array(
 				array(
@@ -192,75 +129,277 @@ class DatabaseSeeder extends Seeder {
 				)
 			)
 		);
+		DB::table('catalogos')->insert(
+			array(
+				array(
+					'nombre'      => 'Marcas',
+					'descripcion' => 'Nombre de la marca del vehiculo'
+				),
+				array(
+					'nombre'      => 'Colores',
+					'descripcion' => 'Colores de los vehiculos'
+				)
+				array(
+					'nombre'      => 'Servicios',
+					'descripcion' => 'Servicios realizables'
+				)
+			)
+		);
+		DB::table('servicios')->insert(
+			array(
+				array(
+					'nombre'      => 'Motor',
+					'catalogo_id' => '3'
+				),
+				array(
+					'nombre'      => 'Frenos',
+					'catalogo_id' => '3'
+				),
+				array(
+					'nombre'      => 'Sistema eléctrico',
+					'catalogo_id' => '3'
+				),
+				array(
+					'nombre'      => 'Suspención',
+					'catalogo_id' => '3'
+				),
+				array(
+					'nombre'      => 'Transmisión',
+					'catalogo_id' => '3'
+				),
+				array(
+					'nombre'      => 'Dirección',
+					'catalogo_id' => '3'
+				),
+				array(
+					'nombre'      => 'Afinación',
+					'catalogo_id' => '3'
+				),
+				array(
+					'nombre'      => 'Diagnóstico',
+					'catalogo_id' => '3'
+				)
+				
+			)
+		);
+		DB::table('colores')->insert(
+			array(
+				array(
+					'nombre'      => 'Rojo',
+					'catalogo_id' => '2'
+				),
+				array(
+					'nombre'      => 'Negro',
+					'catalogo_id' => '2'
+				),
+				array(
+					'nombre'      => 'Blanco',
+					'catalogo_id' => '2'
+				),
+				array(
+					'nombre'      => 'Azul',
+					'catalogo_id' => '2'
+				),
+				array(
+					'nombre'      => 'Verde',
+					'catalogo_id' => '2'
+				),
+				array(
+					'nombre'      => 'Amarillo',
+					'catalogo_id' => '2'
+				),
+				array(
+					'nombre'      => 'Gris',
+					'catalogo_id' => '2'
+				),
+				array(
+					'nombre'      => 'Plata',
+					'catalogo_id' => '2'
+				)
+				
+			)
+		);
 		DB::table('marcas')->insert(
 			array(
-				array('nombre' => 'Audi'),
-				array('nombre' => 'BMW'),
-				array('nombre' => 'Chevrolet'),
-				array('nombre' => 'Chrysler'),
-				array('nombre' => 'Dodge'),
-				array('nombre' => 'Fiat'),
-				array('nombre' => 'Ford'),
-				array('nombre' => 'Honda'),
-				array('nombre' => 'Hyundai'),
-				array('nombre' => 'Jeep'),
-				array('nombre' => 'Mazda'),
-				array('nombre' => 'Mercedes Benz'),
-				array('nombre' => 'Mitsubishi'),
-				array('nombre' => 'Nissan'),
-				array('nombre' => 'Opel'),
-				array('nombre' => 'Peugeot'),
-				array('nombre' => 'Pontiac'),
-				array('nombre' => 'Renault'),
-				array('nombre' => 'Seat'),
-				array('nombre' => 'Subaru'),
-				array('nombre' => 'Suzuki'),
-				array('nombre' => 'Toyota'),
-				array('nombre' => 'VW')  
+				array(
+					'nombre' => 'Audi',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'BMW',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Chevrolet',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Chrysler',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Dodge',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Fiat',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Ford',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Honda',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Hyundai',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Jeep',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Mazda',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Mercedes Benz',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Mitsubishi',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Nissan',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Opel',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Peugeot',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Pontiac',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Renault',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Seat',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Subaru',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Suzuki',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'Toyota',
+					'catalogo_id' => '1'
+					),
+				array('nombre' => 'VW',
+					'catalogo_id' => '1'
+					)  
 			)
 		);
 		DB::table('smarcas')->insert(
 			array(
 				array(
-					'marca_id' => '14'
+					'marca_id' => '14',
 					'nombre'   => 'Tsuru'
 				),
 				array(
-					'marca_id' => '14'
+					'marca_id' => '14',
 					'nombre'   => 'Sentra'
 				),
 				array(
-					'marca_id' => '14'
+					'marca_id' => '14',
 					'nombre'   => 'Maxima'
 				),
 				array(
-					'marca_id' => '14'
+					'marca_id' => '14',
 					'nombre'   => 'Altima'
 				),
 				array(
-					'marca_id' => '14'
+					'marca_id' => '14',
 					'nombre'   => 'March'
 				),
 				array(
-					'marca_id' => '14'
+					'marca_id' => '14',
 					'nombre'   => 'Versa'
 				),
 				array(
-					'marca_id' => '23'
+					'marca_id' => '23',
 					'nombre'   => 'Golf'
 				),
 				array(
-					'marca_id' => '23'
+					'marca_id' => '23',
 					'nombre'   => 'Jetta'
 				),
 				array(
-					'marca_id' => '23'
+					'marca_id' => '23',
 					'nombre'   => 'Pointer'
 				),
 				array(
-					'marca_id' => '23'
+					'marca_id' => '23',
 					'nombre'   => 'Gol'
 				),
+			)
+		);
+
+		DB::table('vehiculos')->insert(
+			array(
+				array(
+					'cliente_id' => '1001',
+					'placas'     => 'MET1245',
+					'marca_id'   => '14',
+					'smarca_id'  => '2',
+					'modelo'     => '2011',
+					'color_id'   => '1',
+					'serie'      => 'QWERTYUIOP45698LK',
+					'nota'       => ''
+				),
+				array(
+					'cliente_id' => '1002',
+					'placas'     => '235SAT',
+					'marca_id'   => '14',
+					'smarca_id'  => '1',
+					'modelo'     => '2014',
+					'color_id'   => '2',
+					'serie'      => 'LKINHGVFRE45698LK',
+					'nota'       => ''
+				),
+				array(
+					'cliente_id' => '1002',
+					'placas'     => 'RAL5689',
+					'marca_id'   => '14',
+					'smarca_id'  => '3',
+					'modelo'     => '4',
+					'color_id'   => '3',
+					'serie'      => 'K5OINBFTLA45698LK',
+					'nota'       => ''
+				),
+				array(
+					'cliente_id' => '1003',
+					'placas'     => 'GHJ7856',
+					'marca_id'   => '14',
+					'smarca_id'  => '5',
+					'modelo'     => '2010',
+					'color_id'   => '4',
+					'serie'      => 'KLASBEYHDB45698LK',
+					'nota'       => ''
+				),
+				array(
+					'cliente_id' => '1004',
+					'placas'     => 'IOP2345',
+					'marca_id'   => '23',
+					'smarca_id'  => '1',
+					'modelo'     => '2004',
+					'color_id'   => '5',
+					'serie'      => 'PKNGTRESAD45698LK',
+					'nota'       => ''
+				),
+				array(
+					'cliente_id' => '1005',
+					'placas'     => '789RTY',
+					'marca_id'   => '23',
+					'smarca_id'  => '3',
+					'modelo'     => '2011',
+					'color_id'   => '6',
+					'serie'      => 'ZXCVBNMJHG45698LK',
+					'nota'       => ''
+				)
 			)
 		);
 	}

@@ -16,6 +16,8 @@ class CreateMarcasTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('nombre');
+			$table->integer('catalogo_id')->unsigned();
+			$table->foreign('catalogo_id')->references('id')->on('catalogos');
 			$table->timestamps();
 		});
 	}

@@ -23,10 +23,14 @@ class VehiculosController extends \BaseController {
 	 */
 	public function create()
 	{
+		$maxModelo = Config::get('opciones.modelo');
+		$colores = Color::all();
 		$marcas = Marca::all();
 		$clientes = Cliente::all();
 		return View::make('vehiculo.create')
+		->with('colores',$colores)
 		->with('marcas',$marcas)
+		->with('maxModelo',$maxModelo)
 		->with('clientes',$clientes);
 	}
 
@@ -44,7 +48,7 @@ class VehiculosController extends \BaseController {
 			);
 		$reglas = array(
             'placas' => 'required|unique:vehiculos',
-            'serie' => 'required|unique:vehiculos'
+            'serie' => 'unique:vehiculos'
         );
         $validador = Validator::make(Input::all(), $reglas);
 		if($validador->fails())
@@ -55,12 +59,12 @@ class VehiculosController extends \BaseController {
 		else
 		{
 			$vehiculo = new Vehiculo();
-			$vehiculo->id_cliente = Input::get('id_cliente');
+			$vehiculo->cliente_id = Input::get('cliente_id');
 			$vehiculo->placas     = Str::upper(Input::get('placas'));
-			$vehiculo->marca      = Input::get('marca');
-			$vehiculo->smarca     = Str::title(Str::lower(Input::get('smarca')));
+			$vehiculo->marca_id   = Input::get('marca_id');
+			$vehiculo->smarca_id  = Input::get('smarca_id');
 			$vehiculo->modelo     = Input::get('modelo');
-			$vehiculo->color      = Input::get('color');
+			$vehiculo->color_id   = Input::get('color_id');
 			$vehiculo->serie      = Str::upper(Input::get('serie'));
 			$vehiculo->nota       = Input::get('nota');
 			$vehiculo->save();
@@ -106,8 +110,14 @@ class VehiculosController extends \BaseController {
 		}
 		else
 		{
+			$colores = Color::all();
+			$marcas = Marca::all();
+			$clientes = Cliente::all();
 			return View::make('vehiculo.edit')
-			->with('vehiculo',$vehiculo);
+			->with('colores',$colores)
+			->with('vehiculo',$vehiculo)
+			->with('marcas',$marcas)
+			->with('clientes',$clientes);
 		}
 	}
 
@@ -127,12 +137,12 @@ class VehiculosController extends \BaseController {
 		}
 		else
 		{
-			$vehiculo->id_cliente = Input::get('id_cliente');
+			$vehiculo->cliente_id = Input::get('cliente_id');
 			$vehiculo->placas     = Str::upper(Input::get('placas'));
-			$vehiculo->marca      = Input::get('marca');
-			$vehiculo->smarca     = Str::title(Str::lower(Input::get('smarca')));
+			$vehiculo->marca_id   = Input::get('marca_id');
+			$vehiculo->smarca_id  = Input::get('smarca_id');
 			$vehiculo->modelo     = Input::get('modelo');
-			$vehiculo->color      = Input::get('color');
+			$vehiculo->color_id   = Input::get('color_id');
 			$vehiculo->serie      = Str::upper(Input::get('serie'));
 			$vehiculo->nota       = Input::get('nota');
 			$vehiculo->save();

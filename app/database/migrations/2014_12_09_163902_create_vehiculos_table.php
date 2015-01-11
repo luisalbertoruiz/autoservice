@@ -17,15 +17,16 @@ class CreateVehiculosTable extends Migration {
 			$table->increments('id');
 			$table->integer('cliente_id')->unsigned();
 			$table->string('placas')->unique();
-			$table->string('marca_id')->unsigned();
-			$table->string('smarca_id')->unsigned();
-			$table->string('modelo');
-			$table->string('color');
-			$table->string('serie')->unique();
-			$table->string('nota');
+			$table->integer('marca_id')->unsigned();
+			$table->integer('smarca_id')->unsigned();
+			$table->string('modelo')->nullable();
+			$table->integer('color_id')->unsigned();
+			$table->string('serie')->nullable();
+			$table->string('nota')->nullable();
 			$table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('cascade');
-			$table->foreign('marca_id')->references('id')->on('marcas')->onDelete('cascade');
-			$table->foreign('smarca_id')->references('id')->on('smarcas')->onDelete('cascade');
+			$table->foreign('marca_id')->references('id')->on('marcas');
+			$table->foreign('smarca_id')->references('id')->on('smarcas');
+			$table->foreign('color_id')->references('id')->on('colores');
 			$table->timestamps();
 		});
 	}

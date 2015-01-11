@@ -19,7 +19,7 @@ class="page-body"
 				<a href="{{ URL::to('/admin')}}">Administración</a>
 			</li>
 			<li>
-				<a href="{{ URL::to('/cliente')}}">Clientes</a>
+				<a href="{{ URL::to('/clientes')}}">Clientes</a>
 			</li>
 			<li class="active">
 				<strong>Editar</strong>
@@ -27,7 +27,7 @@ class="page-body"
 		</ol>
 		<hr>
 		<h2>Edición de Datos del Cliente</h2>
-		<form role="form" class="form-horizontal form-groups-bordered" method="post" action="{{ URL::to('/cliente/actualizar/'.$cliente->id) }}">
+		<form role="form" class="form-horizontal form-groups-bordered" method="post" action="{{ URL::to('/clientes/actualizar/'.$cliente->id) }}">
 			<div class="panel panel-primary" data-collapsed="0">
 				<div class="panel-heading">
 					<div class="panel-title">

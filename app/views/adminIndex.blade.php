@@ -56,7 +56,7 @@ class="page-body page-fade-only"
 				</a>
 			</div>
 			<div class="col-sm-3">
-				<a href="{{ URL::to('/cliente') }}">
+				<a href="{{ URL::to('/vehiculo') }}">
 					<div class="tile-title tile-purple">
 						<div class="icon">
 							<i class="fa fa-truck"></i>

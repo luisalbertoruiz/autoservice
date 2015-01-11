@@ -10,7 +10,9 @@ class SmarcasController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$smarcas = Smarca::all();
+		return View::make('smarca.index')
+		->with('smarcas',$smarcas);
 	}
 
 	/**
@@ -21,7 +23,9 @@ class SmarcasController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		$marcas = Marca::all();
+		return View::make('smarca.create')
+		->with('marcas',$marcas);
 	}
 
 	/**
@@ -32,7 +36,14 @@ class SmarcasController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+        
+		$smarca = new Smarca();
+		$smarca->marca_id = Input::get('marca_id');
+		$smarca->nombre    = Str::title(Str::lower(Input::get('nombre')));
+		$smarca->save();
+		return Redirect::to('/smarcas')
+		->with('alert-success', 'Se ha agregado el smarca.');
+		
 	}
 
 	/**
@@ -44,7 +55,16 @@ class SmarcasController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$smarca = Smarca::find($id);
+		if (is_null ($smarca))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			return View::make('smarca.show')
+			->with('smarca',$smarca);
+		}
 	}
 
 	/**
@@ -56,7 +76,16 @@ class SmarcasController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$smarca = Smarca::find($id);
+		if (is_null ($smarca))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			return View::make('smarca.edit')
+			->with('smarca',$smarca);
+		}
 	}
 
 	/**
@@ -68,7 +97,18 @@ class SmarcasController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$smarca = Smarca::find($id);
+		if (is_null ($smarca))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$smarca->nombre    = Str::title(Str::lower(Input::get('nombre')));
+			$smarca->save();
+			return Redirect::to('/smarcas')
+			->with('alert-success', 'Se ha editado el smarca.');
+		}
 	}
 
 	/**
@@ -80,7 +120,16 @@ class SmarcasController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$smarca = Smarca::find($id);
+		if (is_null ($smarca))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$smarca->delete();
+			return Redirect::to('/smarcas')
+			->with('alert-danger', 'Se ha eliminado el smarca.');
+		}
 	}
-
 }

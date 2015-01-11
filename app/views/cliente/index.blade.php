@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('title')
-Autoservice
+SGA | Clientes
 @stop
 @section('body')
 class="page-body"
@@ -22,7 +22,7 @@ class="page-body"
 		<li class="active">
 			<strong>Clientes</strong>
 		</li>
-		<a href="{{ URL::to('/cliente/crear')}}" class="btn btn-blue btn-icon pull-right">Nuevo<i class="entypo-plus"></i></a>
+		<a href="{{ URL::to('/clientes/crear')}}" class="btn btn-blue btn-icon pull-right">Nuevo<i class="entypo-plus"></i></a>
 	</ol>
 	<hr>
 		<table class="table table-bordered datatable" id="tabla">
@@ -41,9 +41,9 @@ class="page-body"
 					<td>{{ $cliente->nombre }}</td>
 					<td>{{ $cliente->rfc }}</td>
 					<td>
-					<a href="{{URL::to('/cliente/mostrar/'.$cliente->id)}}" class="btn btn-success btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="mostrar"><i class="glyphicon glyphicon-eye-open"></i></a>
-					<a href="{{URL::to('/cliente/editar/'.$cliente->id)}}" class="btn btn-orange btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="editar"><i class="fa fa-edit"></i></a>
-					<a href="{{URL::to('/cliente/eliminar/'.$cliente->id)}}" class="btn btn-danger btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="eliminar"><i class="glyphicon glyphicon-trash"></i></a>
+					<a href="{{URL::to('/clientes/mostrar/'.$cliente->id)}}" class="btn btn-success btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="mostrar"><i class="glyphicon glyphicon-eye-open"></i></a>
+					<a href="{{URL::to('/clientes/editar/'.$cliente->id)}}" class="btn btn-orange btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="editar"><i class="fa fa-edit"></i></a>
+					<a href="{{URL::to('/clientes/eliminar/'.$cliente->id)}}" class="btn btn-danger btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="eliminar"><i class="glyphicon glyphicon-trash"></i></a>
 					</td>
 				</tr>
 			@endforeach
@@ -67,12 +67,7 @@ class="page-body"
 	{
 		$("#tabla").dataTable({
 			"sPaginationType": "bootstrap",
-			"aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
-			"bStateSave": true
-		});
-		
-		$(".dataTables_wrapper select").select2({
-			minimumResultsForSearch: -1
+			"aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todo"]]
 		});
 	});
 </script>

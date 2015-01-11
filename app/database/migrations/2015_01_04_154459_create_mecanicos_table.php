@@ -15,6 +15,7 @@ class CreateMecanicosTable extends Migration {
 		Schema::create('mecanicos', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('nombre');
 			$table->timestamps();
 		});
 	}

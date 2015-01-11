@@ -10,7 +10,9 @@ class PresupuestosController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$presupuestos = Presupuesto::all();
+		return View::make('presupuesto.index')
+		->with('presupuestos',$presupuestos);
 	}
 
 	/**
@@ -21,7 +23,9 @@ class PresupuestosController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		$clientes = Cliente::all();
+		return View::make('presupuesto.create')
+		->with('clientes',$clientes);
 	}
 
 	/**
@@ -32,7 +36,14 @@ class PresupuestosController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+        
+		$presupuestos = new Presupuesto();
+		$presupuestos->catalogo_id = 2;
+		$presupuestos->nombre    = Str::title(Str::lower(Input::get('nombre')));
+		$presupuestos->save();
+		return Redirect::to('/presupuestos')
+		->with('alert-success', 'Se ha agregado el presupuestos.');
+		
 	}
 
 	/**
@@ -44,7 +55,16 @@ class PresupuestosController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$presupuestos = Presupuesto::find($id);
+		if (is_null ($presupuestos))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			return View::make('presupuesto.show')
+			->with('presupuestos',$presupuestos);
+		}
 	}
 
 	/**
@@ -56,7 +76,16 @@ class PresupuestosController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$presupuestos = Presupuesto::find($id);
+		if (is_null ($presupuestos))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			return View::make('presupuesto.edit')
+			->with('presupuestos',$presupuestos);
+		}
 	}
 
 	/**
@@ -68,7 +97,18 @@ class PresupuestosController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$presupuestos = Presupuesto::find($id);
+		if (is_null ($presupuestos))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$presupuestos->nombre    = Str::title(Str::lower(Input::get('nombre')));
+			$presupuestos->save();
+			return Redirect::to('/presupuestos')
+			->with('alert-success', 'Se ha editado el presupuestos.');
+		}
 	}
 
 	/**
@@ -80,7 +120,23 @@ class PresupuestosController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		$presupuestos = Presupuesto::find($id);
+		if (is_null ($presupuestos))
+		{
+			App::abort(404);
+		}
+		else
+		{
+			$presupuestos->delete();
+			return Redirect::to('/presupuestos')
+			->with('alert-danger', 'Se ha eliminado el presupuestos.');
+		}
 	}
 
+	public function dropdown($id)
+	{
+		$vehiculos = Cliente::find($id)->vehiculos;
+		return View::make('presupuesto.dropdown')
+		->with('vehiculos', $vehiculos);
+	}
 }

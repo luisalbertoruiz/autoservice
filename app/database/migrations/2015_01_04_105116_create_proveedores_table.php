@@ -15,13 +15,13 @@ class CreateProveedoresTable extends Migration {
 		Schema::create('proveedores', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('nombre');
-			$table->string('direccion');
-			$table->string('telefono');
-			$table->string('celular');
-			$table->string('radio');
-			$table->string('email');
-			$table->string('pagina');
+			$table->string('nombre')->unique();
+			$table->string('direccion')->nullable();
+			$table->string('telefono')->nullable();
+			$table->string('celular')->nullable();
+			$table->string('radio')->nullable();
+			$table->string('email')->nullable();
+			$table->string('pagina')->nullable();
 			$table->timestamps();
 		});
 		$statement = "ALTER TABLE proveedores AUTO_INCREMENT = 2001;";

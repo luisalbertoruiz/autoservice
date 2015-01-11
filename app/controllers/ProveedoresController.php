@@ -44,7 +44,7 @@ class ProveedoresController extends \BaseController {
 		$proveedor->email     = Input::get('email');
 		$proveedor->pagina    = Input::get('pagina');
 		$proveedor->save();
-		return Redirect::to('/proveedor')
+		return Redirect::to('/proveedores')
 		->with('alert-success', 'Se ha agregado el proveedor.');
 		
 	}
@@ -115,7 +115,7 @@ class ProveedoresController extends \BaseController {
 			$proveedor->email     = Input::get('email');
 			$proveedor->pagina    = Input::get('pagina');
 			$proveedor->save();
-			return Redirect::to('/proveedor/mostrar/'.$proveedor->id)
+			return Redirect::to('/proveedores/mostrar/'.$proveedor->id)
 			->with('alert-success', 'Se ha editado el proveedor.');
 		}
 	}
@@ -137,7 +137,7 @@ class ProveedoresController extends \BaseController {
 		else
 		{
 			$proveedor->delete();
-			return Redirect::to('/proveedor')
+			return Redirect::to('/proveedores')
 			->with('alert-danger', 'Se ha eliminado el proveedor.');
 		}
 	}

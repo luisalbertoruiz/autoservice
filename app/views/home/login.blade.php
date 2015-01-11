@@ -63,8 +63,5 @@ class="page-body login-page login-form-fall"
 @stop
 @section('script')
 <script type="text/javascript">
-	$(document).ready(function($)
-	{
-	});
 </script>
 @stop

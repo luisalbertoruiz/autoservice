@@ -18,33 +18,6 @@
 							<a href="{{URL::to('servicios')}}">
 								<span>Servicios</span>
 							</a>
-							<ul>
-								<li>
-									<a href="about.html">
-										<span>About Us</span>
-									</a>
-								</li>
-								<li class="active">
-									<a href="#">
-										<span>Active Menu Item</span>
-									</a>
-								</li>
-								<li>
-									<a href="gallery.html">
-										<span>Gallery</span>
-									</a>
-								</li>
-								<li>
-									<a href="blog-post.html">
-										<span>Blog Post</span>
-									</a>
-								</li>
-								<li>
-									<a href="portfolio-single.html">
-										<span>Portfolio Item</span>
-									</a>
-								</li>
-							</ul>
 						</li>
 						<li>
 							<a href="{{URL::to('nosotros')}}">

@@ -19,7 +19,7 @@ class="page-body"
 				<a href="{{ URL::to('/admin')}}">Administración</a>
 			</li>
 			<li>
-				<a href="{{ URL::to('/cliente')}}">Clientes</a>
+				<a href="{{ URL::to('/vehiculos')}}">Vehículos</a>
 			</li>
 			<li class="active">
 				<strong>Mostrar</strong>
@@ -37,30 +37,24 @@ class="page-body"
 					<ul class="profile-info-sections">
 						<li>
 							<div class="profile-stat">
-								<h4>{{ $cliente->id }}</h4>
-								<span>ID</span>
+								<h4>{{ $vehiculo->cliente->nombre }}</h4>
+								<span>Propietario</span>
 							</div>
 						</li>
 						<li>
 							<div class="profile-stat">
-								<h4>{{ $cliente->nombre }}</h4>
-								<span>Nombre</span>
-							</div>
-						</li>
-						<li>
-							<div class="profile-stat">
-								<h4>{{ $cliente->rfc }}</h4>
-								<span>RFC</span>
+								<h4>{{ $vehiculo->placas }}</h4>
+								<span>Placas</span>
 							</div>
 						</li>
 					</ul>
 				</div>
 				<div class="col-sm-2">
 					<div class="profile-buttons">
-						<a href="{{URL::to('/cliente/editar/'.$cliente->id)}}" class="btn btn-default tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="editar">
+						<a href="{{URL::to('/vehiculos/editar/'.$vehiculo->id)}}" class="btn btn-default tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="editar">
 							<i class="fa fa-edit"></i>
 						</a>
-						<a href="{{URL::to('/cliente/eliminar/'.$cliente->id)}}" class="btn btn-default tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="eliminar">
+						<a href="{{URL::to('/vehiculos/eliminar/'.$vehiculo->id)}}" class="btn btn-default tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="eliminar">
 							<i class="glyphicon glyphicon-trash"></i>
 						</a>
 					</div>
@@ -72,32 +66,42 @@ class="page-body"
 						<ul class="user-details">
 							<li>
 								<i class="entypo-phone"></i>
-								&nbsp;
-								Telefono:&nbsp;&nbsp;
-								<strong>{{ $cliente->telefono }}</strong>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;
+								Marca:&nbsp;&nbsp;
+								<strong>{{ $vehiculo->marca->nombre }}</strong>
 							</li>
 							<li>
 								<i class="entypo-mobile"></i>
 								&nbsp;&nbsp;&nbsp;
-								Celular:&nbsp;&nbsp;&nbsp;
-								<strong>{{ $cliente->celular }}</strong>
+								sub Marca:&nbsp;&nbsp;&nbsp;
+								<strong>{{ $vehiculo->smarca->nombre }}</strong>
 							</li>
 							<li>
 								<i class="entypo-network"></i>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								Radio:&nbsp;&nbsp;&nbsp;
-								<strong>{{ $cliente->radio }}</strong>
+								&nbsp;&nbsp;
+								Modelo:&nbsp;&nbsp;&nbsp;
+								<strong>{{ $vehiculo->modelo }}</strong>
 							</li>
 							<li>
 								<i class="entypo-mail"></i>
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								eMail:&nbsp;&nbsp;&nbsp;
-								<strong>{{ $cliente->email }}</strong>
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								Color:&nbsp;&nbsp;&nbsp;
+								<strong>{{ $vehiculo->color->nombre }}</strong>
+							</li>
+							<li>
+								<i class="entypo-mail"></i>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								Serie:&nbsp;&nbsp;&nbsp;
+								<strong>{{ $vehiculo->serie }}</strong>
 							</li>
 						</ul>
 						<!-- tabs for the profile links -->
 						<ul class="nav nav-tabs">
-							<li class="active"><a>Dirección</a></li>
+							<li class="active"><a>Comentarios</a></li>
 						</ul>
 					</div>
 				</div>
@@ -110,32 +114,14 @@ class="page-body"
 								
 								<i class="entypo-home"></i>
 								&nbsp;
-								Calle y No:&nbsp;&nbsp;&nbsp;
-								<strong>{{ $cliente->calle }}</strong>
+								Nota:&nbsp;&nbsp;&nbsp;
+								<strong>{{ $vehiculo->nota }}</strong>
 							</li><br>
-							<li>
-								<i class="entypo-address"></i>
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								Colonia:&nbsp;&nbsp;&nbsp;
-								<strong>{{ $cliente->colonia }}</strong>
-							</li><br>
-							<li>
-								<i class="entypo-map"></i>
-								&nbsp;&nbsp;
-								Localidad:&nbsp;&nbsp;&nbsp;
-								<strong>{{ $cliente->localidad }}</strong>
-							</li><br>
-							<li>
-								<i class="entypo-location"></i>
-								&nbsp;&nbsp;&nbsp;
-								Cod Pos:&nbsp;&nbsp;&nbsp;
-								<strong>{{ $cliente->cp }}</strong>
-							</li>
 						</ul>
 					</div>
 					<hr>
 					<div class="col-md-offset-7 col-md-5">
-						<a class="btn btn-primary btn-icon icon-left pull-right" href='{{ URL::to('/cliente')}}'><i class="entypo-reply"></i>Regresar</a>
+						<a class="btn btn-primary btn-icon icon-left pull-right" href='{{ URL::to('/vehiculos')}}'><i class="entypo-reply"></i>Regresar</a>
 					</div>
 				</div>
 			</section>

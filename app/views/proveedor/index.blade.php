@@ -22,13 +22,12 @@ class="page-body"
 		<li class="active">
 			<strong>Proveedores</strong>
 		</li>
-		<a href="{{ URL::to('/proveedor/crear')}}" class="btn btn-blue btn-icon pull-right">Nuevo<i class="entypo-plus"></i></a>
+		<a href="{{ URL::to('/proveedores/crear')}}" class="btn btn-blue btn-icon pull-right">Nuevo<i class="entypo-plus"></i></a>
 	</ol>
 	<hr>
 		<table class="table table-bordered datatable" id="tabla">
 			<thead>
 				<tr>
-					<th>ID</th>
 					<th>Nombre</th>
 					<th>Telefono</th>
 					<th>Acciones</th>
@@ -37,13 +36,12 @@ class="page-body"
 			<tbody>
 				@foreach($proveedores as $proveedor)
 				<tr>
-					<td>{{ $proveedor->id }}</td>
 					<td>{{ $proveedor->nombre }}</td>
 					<td>{{ $proveedor->telefono }}</td>
 					<td>
-					<a href="{{URL::to('/proveedor/mostrar/'.$proveedor->id)}}" class="btn btn-success btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="mostrar"><i class="glyphicon glyphicon-eye-open"></i></a>
-					<a href="{{URL::to('/proveedor/editar/'.$proveedor->id)}}" class="btn btn-orange btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="editar"><i class="fa fa-edit"></i></a>
-					<a href="{{URL::to('/proveedor/eliminar/'.$proveedor->id)}}" class="btn btn-danger btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="eliminar"><i class="glyphicon glyphicon-trash"></i></a>
+					<a href="{{URL::to('/proveedores/mostrar/'.$proveedor->id)}}" class="btn btn-success btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="mostrar"><i class="glyphicon glyphicon-eye-open"></i></a>
+					<a href="{{URL::to('/proveedores/editar/'.$proveedor->id)}}" class="btn btn-orange btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="editar"><i class="fa fa-edit"></i></a>
+					<a href="{{URL::to('/proveedores/eliminar/'.$proveedor->id)}}" class="btn btn-danger btn-xs tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="eliminar"><i class="glyphicon glyphicon-trash"></i></a>
 					</td>
 				</tr>
 			@endforeach
@@ -69,10 +67,6 @@ class="page-body"
 			"sPaginationType": "bootstrap",
 			"aLengthMenu": [[5, 10, 25, -1], [5, 10, 25, "All"]],
 			"bStateSave": true
-		});
-		
-		$(".dataTables_wrapper select").select2({
-			minimumResultsForSearch: -1
 		});
 	});
 </script>

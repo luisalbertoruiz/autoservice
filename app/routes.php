@@ -23,62 +23,103 @@ $response->headers->set('Expires','Fri, 01 Jan 1990 00:00:00 GMT');
 // Home
 Route::get ('/', 'HomeController@index');
 Route::get ('/contacto', 'HomeController@contacto');
-Route::get ('/servicios', 'HomeController@servicio');
+Route::get ('/servicioss', 'HomeController@servicios');
 Route::get ('/nosotros', 'HomeController@nosotros');
 Route::get ('/login', 'UsersController@login');
 Route::post('/loged', 'UsersController@loged');
 Route::get ('/logout', 'UsersController@logout');
-// Administrador
+// Rol Administrador
 Route::group(array('before' => 'Sentry|inGroup:admin'), function(){
 // Clientes
-Route::get  ('/cliente/crear','ClientesController@create');
-Route::post ('/cliente/guardar','ClientesController@store');
-Route::get  ('/cliente/editar/{id}','ClientesController@edit');
-Route::post ('/cliente/actualizar/{id}','ClientesController@update');
-Route::get  ('/cliente/eliminar/{id}','ClientesController@destroy');
+Route::get  ('/clientes/crear','ClientesController@create');
+Route::post ('/clientes/guardar','ClientesController@store');
+Route::get  ('/clientes/editar/{id}','ClientesController@edit');
+Route::post ('/clientes/actualizar/{id}','ClientesController@update');
+Route::get  ('/clientes/eliminar/{id}','ClientesController@destroy');
 // Proveedores
-Route::get  ('/proveedor','ProveedoresController@index');
-Route::get  ('/proveedor/crear','ProveedoresController@create');
-Route::post ('/proveedor/guardar','ProveedoresController@store');
-Route::get  ('/proveedor/mostrar/{id}','ProveedoresController@show');
-Route::get  ('/proveedor/editar/{id}','ProveedoresController@edit');
-Route::post ('/proveedor/actualizar/{id}','ProveedoresController@update');
-Route::get  ('/proveedor/eliminar/{id}','ProveedoresController@destroy');
+Route::get  ('/proveedores','ProveedoresController@index');
+Route::get  ('/proveedores/crear','ProveedoresController@create');
+Route::post ('/proveedores/guardar','ProveedoresController@store');
+Route::get  ('/proveedores/mostrar/{id}','ProveedoresController@show');
+Route::get  ('/proveedores/editar/{id}','ProveedoresController@edit');
+Route::post ('/proveedores/actualizar/{id}','ProveedoresController@update');
+Route::get  ('/proveedores/eliminar/{id}','ProveedoresController@destroy');
 // Vehiculos
-Route::get  ('/vehiculo','VehiculosController@index');
-Route::get  ('/vehiculo/crear','VehiculosController@create');
-Route::post ('/vehiculo/guardar','VehiculosController@store');
-Route::get  ('/vehiculo/mostrar/{id}','VehiculosController@show');
-Route::get  ('/vehiculo/editar/{id}','VehiculosController@edit');
-Route::post ('/vehiculo/actualizar/{id}','VehiculosController@update');
-Route::get  ('/vehiculo/eliminar/{id}','VehiculosController@destroy');
+Route::get  ('/vehiculos','VehiculosController@index');
+Route::get  ('/vehiculos/crear','VehiculosController@create');
+Route::post ('/vehiculos/guardar','VehiculosController@store');
+Route::get  ('/vehiculos/mostrar/{id}','VehiculosController@show');
+Route::get  ('/vehiculos/editar/{id}','VehiculosController@edit');
+Route::post ('/vehiculos/actualizar/{id}','VehiculosController@update');
+Route::get  ('/vehiculos/eliminar/{id}','VehiculosController@destroy');
+Route::get  ('/vehiculos/dropdown/{id}', 'VehiculosController@dropdown');
 // Users
-Route::get  ('/usuario','UsersController@index');
-Route::get  ('/usuario/crear','UsersController@create');
-Route::post ('/usuario/guardar','UsersController@store');
-Route::get  ('/usuario/mostrar/{id}','UsersController@show');
-Route::get  ('/usuario/editar/{id}','UsersController@edit');
-Route::post ('/usuario/actualizar/{id}','UsersController@update');
-Route::get  ('/usuario/eliminar/{id}','UsersController@destroy');
+Route::get  ('/usuarios','UsersController@index');
+Route::get  ('/usuarios/crear','UsersController@create');
+Route::post ('/usuarios/guardar','UsersController@store');
+Route::get  ('/usuarios/mostrar/{id}','UsersController@show');
+Route::get  ('/usuarios/editar/{id}','UsersController@edit');
+Route::post ('/usuarios/actualizar/{id}','UsersController@update');
+Route::get  ('/usuarios/eliminar/{id}','UsersController@destroy');
 // Servicios
-Route::get  ('/servicio','ServiciosController@index');
-Route::get  ('/servicio/crear','ServiciosController@create');
-Route::post ('/servicio/guardar','ServiciosController@store');
-Route::get  ('/servicio/mostrar/{id}','ServiciosController@show');
-Route::get  ('/servicio/editar/{id}','ServiciosController@edit');
-Route::post ('/servicio/actualizar/{id}','ServiciosController@update');
-Route::get  ('/servicio/eliminar/{id}','ServiciosController@destroy');
-
-Route::get  ('/dropdown/{id}', 'VehiculosController@dropdown');
+Route::get  ('/servicios','ServiciosController@index');
+Route::get  ('/servicios/crear','ServiciosController@create');
+Route::post ('/servicios/guardar','ServiciosController@store');
+Route::get  ('/servicios/mostrar/{id}','ServiciosController@show');
+Route::get  ('/servicios/editar/{id}','ServiciosController@edit');
+Route::post ('/servicios/actualizar/{id}','ServiciosController@update');
+Route::get  ('/servicios/eliminar/{id}','ServiciosController@destroy');
+// Sub Sservicios
+Route::get  ('/sservicios','SserviciosController@index');
+Route::get  ('/sservicios/crear','SserviciosController@create');
+Route::post ('/sservicios/guardar','SserviciosController@store');
+Route::get  ('/sservicios/mostrar/{id}','SserviciosController@show');
+Route::get  ('/sservicios/editar/{id}','SserviciosController@edit');
+Route::post ('/sservicios/actualizar/{id}','SserviciosController@update');
+Route::get  ('/sservicios/eliminar/{id}','SserviciosController@destroy');
+// Colores
+Route::get  ('/colores','ColoresController@index');
+Route::get  ('/colores/crear','ColoresController@create');
+Route::post ('/colores/guardar','ColoresController@store');
+Route::get  ('/colores/mostrar/{id}','ColoresController@show');
+Route::get  ('/colores/editar/{id}','ColoresController@edit');
+Route::post ('/colores/actualizar/{id}','ColoresController@update');
+Route::get  ('/colores/eliminar/{id}','ColoresController@destroy');
+// Marcas
+Route::get  ('/marcas','MarcasController@index');
+Route::get  ('/marcas/crear','MarcasController@create');
+Route::post ('/marcas/guardar','MarcasController@store');
+Route::get  ('/marcas/mostrar/{id}','MarcasController@show');
+Route::get  ('/marcas/editar/{id}','MarcasController@edit');
+Route::post ('/marcas/actualizar/{id}','MarcasController@update');
+Route::get  ('/marcas/eliminar/{id}','MarcasController@destroy');
+// Sub marcas
+Route::get  ('/smarcas','SmarcasController@index');
+Route::get  ('/smarcas/crear','SmarcasController@create');
+Route::post ('/smarcas/guardar','SmarcasController@store');
+Route::get  ('/smarcas/mostrar/{id}','SmarcasController@show');
+Route::get  ('/smarcas/editar/{id}','SmarcasController@edit');
+Route::post ('/smarcas/actualizar/{id}','SmarcasController@update');
+Route::get  ('/smarcas/eliminar/{id}','SmarcasController@destroy');
+// Presupuestos
+Route::get  ('/presupuestos','PresupuestosController@index');
+Route::get  ('/presupuestos/crear','PresupuestosController@create');
+Route::post ('/presupuestos/guardar','PresupuestosController@store');
+Route::get  ('/presupuestos/mostrar/{id}','PresupuestosController@show');
+Route::get  ('/presupuestos/editar/{id}','PresupuestosController@edit');
+Route::post ('/presupuestos/actualizar/{id}','PresupuestosController@update');
+Route::get  ('/presupuestos/eliminar/{id}','PresupuestosController@destroy');
+Route::get  ('/presupuestos/dropdown/{id}', 'PresupuestosController@dropdown');
 });
+// Rol Usuarios
 Route::group(array('before' => 'Sentry|inGroup:users'), function(){
 Route::get  ('/admin','HomeController@admin');
 // Clientes
-Route::get  ('/cliente','ClientesController@index');
-Route::get  ('/cliente/mostrar/{id}','ClientesController@show');
+Route::get  ('/clientes','ClientesController@index');
+Route::get  ('/clientes/mostrar/{id}','ClientesController@show');
 });
 
-Route::get('sentry', function()
+/*Route::get('sentry', function()
 {
 	$groupA = Sentry::createGroup([
 		'name'        => 'administrador',
@@ -88,7 +129,7 @@ Route::get('sentry', function()
 		],
 		]);
 	$groupU = Sentry::createGroup([
-		'name'        => 'usuario',
+		'name'        => 'usuarios',
 		'permissions' =>[
 		'admin'       => 0,
 		'users'       => 1,
@@ -114,7 +155,7 @@ Route::get('sentry', function()
 	$user->addGroup($groupU);
 	
 	return 'todo se genero correctamente';
-});
+});*/
 
 /*
 Route::get('indexAdd', function()

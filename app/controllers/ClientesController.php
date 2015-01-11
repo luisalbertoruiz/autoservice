@@ -43,7 +43,7 @@ class ClientesController extends \BaseController {
         $validador = Validator::make(Input::all(), $reglas);
 		if($validador->fails())
 		{
-			return Redirect::to('/cliente')
+			return Redirect::to('/clientes')
 			->with('alert-danger', 'Ya se encuentra registrado un cliente con ese RFC.');
 		}
 		else
@@ -134,7 +134,7 @@ class ClientesController extends \BaseController {
 			$cliente->radio     = Input::get('radio');
 			$cliente->email     = Input::get('email');
 			$cliente->save();
-			return Redirect::to('/cliente/mostrar/'.$cliente->id)
+			return Redirect::to('/clientes/mostrar/'.$cliente->id)
 			->with('alert-success', 'Se ha editado el cliente.');
 		}
 	}
@@ -156,7 +156,7 @@ class ClientesController extends \BaseController {
 		else
 		{
 			$cliente->delete();
-			return Redirect::to('/cliente')
+			return Redirect::to('/clientes')
 			->with('alert-danger', 'Se ha eliminado el cliente.');
 		}
 	}

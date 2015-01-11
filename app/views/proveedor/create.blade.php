@@ -20,7 +20,7 @@ class="page-body"
 			<a href="{{ URL::to('/admin')}}">Administración</a>
 		</li>
 		<li>
-			<a href="{{ URL::to('/proveedor')}}">Proveedores</a>
+			<a href="{{ URL::to('/proveedores')}}">Proveedores</a>
 		</li>
 		<li class="active">
 			<strong>Nuevo</strong>
@@ -30,7 +30,7 @@ class="page-body"
 	<div class="well well-sm">
 		<h4>Porfavor llena los campos para registrar un nuevo proveedor.</h4>
 	</div>
-	<form id="rootwizard-2" method="post" action="{{ URL::to('/proveedor/guardar') }}" class="form-wizard validate">
+	<form id="rootwizard-2" method="post" action="{{ URL::to('/proveedores/guardar') }}" class="form-wizard validate">
 		<div class="steps-progress">
 			<div class="progress-indicator"></div>
 		</div>

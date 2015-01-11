@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('title')
-Autoservice
+SGA | Clientes
 @stop
 @section('body')
 class="page-body"
@@ -20,7 +20,7 @@ class="page-body"
 			<a href="{{ URL::to('/admin')}}">Administración</a>
 		</li>
 		<li>
-			<a href="{{ URL::to('/cliente')}}">Clientes</a>
+			<a href="{{ URL::to('/clientes')}}">Clientes</a>
 		</li>
 		<li class="active">
 			<strong>Nuevo</strong>
@@ -30,7 +30,7 @@ class="page-body"
 	<div class="well well-sm">
 		<h4>Porfavor llena los campos para registrar un nuevo cliente.</h4>
 	</div>
-	<form id="rootwizard-2" method="post" action="{{ URL::to('/cliente/guardar') }}" class="form-wizard validate">
+	<form id="rootwizard-2" method="post" action="{{ URL::to('/clientes/guardar') }}" class="form-wizard validate">
 		<div class="steps-progress">
 			<div class="progress-indicator"></div>
 		</div>

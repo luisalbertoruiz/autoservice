@@ -6,7 +6,6 @@ SGA | Vehículos
 class="page-body"
 @stop
 @section('content')
-<?php $user = Sentry::getUser() ?>
 <div class="page-container">	
 	@include('layout.sidebarMenu')
 	<div class="main-content">
@@ -20,7 +19,7 @@ class="page-body"
 			<a href="{{ URL::to('/admin')}}">Administración</a>
 		</li>
 		<li>
-			<a href="{{ URL::to('/vehiculo')}}">Vehiculos</a>
+			<a href="{{ URL::to('/vehiculos')}}">Vehiculos</a>
 		</li>
 		<li class="active">
 			<strong>Nuevo</strong>
@@ -30,19 +29,19 @@ class="page-body"
 	<div class="well well-sm">
 		<h4>Porfavor llena los campos para registrar un nuevo vehiculo.</h4>
 	</div>
-	<form id="rootwizard-2" method="post" action="{{ URL::to('/vehiculo/guardar') }}" class="form-wizard validate">
+	<form id="rootwizard-2" method="post" action="{{ URL::to('/vehiculos/guardar') }}" class="form-wizard validate">
 		<div class="steps-progress">
 			<div class="progress-indicator"></div>
 		</div>
 		<ul>
 			<li class="active">
-				<a href="#tab2-1" data-toggle="tab"><span>1</span>Información Personal</a>
+				<a href="#tab2-1" data-toggle="tab"><span>1</span>Información Específica</a>
 			</li>
 			<li>
-				<a href="#tab2-2" data-toggle="tab"><span>2</span>Dirección</a>
+				<a href="#tab2-2" data-toggle="tab"><span>2</span>Características</a>
 			</li>
 			<li>
-				<a href="#tab2-3" data-toggle="tab"><span>3</span>Contacto</a>
+				<a href="#tab2-3" data-toggle="tab"><span>3</span>Comentarios</a>
 			</li>
 		</ul>
 		<div class="tab-content">
@@ -50,12 +49,12 @@ class="page-body"
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="cliente">Cliente</label>
+							<label for="cliente_id">propietario</label>
 							<div class="input-group">
 								<span class="input-group-addon">
 									<i class="entypo-users"></i>
 								</span>
-								<select name="nombre" id="nombre_chz" class="form-control" required>
+								<select name="cliente_id" id="nombre_chz" class="form-control" required>
 									<option></option>
 									@foreach($clientes as $cliente)
 										<option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
@@ -71,7 +70,18 @@ class="page-body"
 								<span class="input-group-addon">
 									<i class="entypo-vcard"></i>
 								</span>
-								<input type="text" class="form-control" id="placas" name="placas" maxlength="6" required pattern="^[a-zA-Z0-9]*$">
+								<input type="text" class="form-control" id="placas" name="placas" maxlength="8" required pattern="^[a-zA-Z0-9]*$">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 pull-right">
+						<div class="form-group">
+							<label for="serie">No. Serie</label>
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="entypo-vcard"></i>
+								</span>
+								<input type="text" class="form-control" id="serie" name="serie" maxlength="16"pattern="^[a-zA-Z0-9]*$">
 							</div>
 						</div>
 					</div>
@@ -81,12 +91,12 @@ class="page-body"
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="marca">Marca</label>
+							<label for="marca_id">Marca</label>
 							<div class="input-group">
 								<span class="input-group-addon">
 									<i class="entypo-home"></i>
 								</span>
-								<select name="marca" id="marca" class="form-control" required>
+								<select name="marca_id" id="marca_id" class="form-control" required>
 									<option></option>
 									@foreach($marcas as $marca)
 										<option value="{{$marca->id}}">{{$marca->nombre}}</option>
@@ -102,9 +112,9 @@ class="page-body"
 								<span class="input-group-addon">
 									<i class="entypo-address"></i>
 								</span>
-								<select name="marca" id="marca" class="form-control">
+								<select name="modelo" id="modelo" class="form-control" required>
 									<option></option>
-									@for($i=1990;$i<=2015;$i++)
+									@for($i=1990;$i <= $maxModelo; $i++)
 										<option value="{{$i}}">{{$i}}</option>
 									@endfor
 								</select>
@@ -115,12 +125,12 @@ class="page-body"
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="smarca">Sub-marca</label>
+							<label for="smarca_id">Sub-marca</label>
 							<div class="input-group">
 								<span class="input-group-addon">
 									<i class="entypo-map"></i>
 								</span>
-								<select name="smarca" id="smarca" class="form-control" required>
+								<select name="smarca_id" id="smarca_id" class="form-control" required>
 									<option value="" default selected>seleciona una marca</option>
 								</select>
 							</div>
@@ -128,12 +138,17 @@ class="page-body"
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label for="cp">Código Postal</label>
+							<label for="color_id">Color</label>
 							<div class="input-group">
 								<span class="input-group-addon">
 									<i class="entypo-location"></i>
 								</span>
-								<input type="text" class="form-control" id="cp" name="cp" maxlength="5" pattern="^[0-9]{5}">
+								<select id="color_id" name="color_id" class="form-control" required>
+									<option value=""></option>
+									@foreach($colores as $color)
+									<option value="{{$color->id}}">{{$color->nombre}}</option>
+								@endforeach
+								</select>
 							</div>
 						</div>
 					</div>
@@ -141,50 +156,10 @@ class="page-body"
 			</div>
 			<div class="tab-pane" id="tab2-3">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-8 col-md-offset-2">
 						<div class="form-group">
-							<label for="telefono">Teléfono</label>
-							<div class="input-group">
-								<span class="input-group-addon">
-									<i class="entypo-phone"></i>
-								</span>
-								<input type="text" class="form-control" id="telefono" name="telefono" maxlength="10" pattern="^\d+$">
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="celular">Celular</label>
-							<div class="input-group">
-								<span class="input-group-addon">
-									<i class="entypo-mobile"></i>
-								</span>
-								<input type="text" class="form-control" id="celular" name="celular" maxlength="10" pattern="^\d+$">
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="radio">Radio</label>
-							<div class="input-group">
-								<span class="input-group-addon">
-									<i class="entypo-network"></i>
-								</span>
-								<input type="text" class="form-control" id="radio" name="radio" maxlength="10" pattern="^\d+$">
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="form-group">
-							<label for="email">eMail</label>
-							<div class="input-group">
-								<span class="input-group-addon">
-									<i class="entypo-mail"></i>
-								</span>
-								<input type="email" class="form-control" id="email" name="email" maxlength="50">
-							</div>
+							<label for="nota"><i class="entypo-location"></i>&nbsp;Comentarios</label><br>
+							<textarea name="nota" id="nota" cols="83" rows="8" style="resize:none" maxlength="320"></textarea>
 						</div>
 					</div>
 				</div>
@@ -209,7 +184,6 @@ class="page-body"
 			</ul>
 		</div>
 	{{ Form::close() }}
-
 </div>		
 @stop
 @section('css')
@@ -226,15 +200,16 @@ class="page-body"
 	{
 		$('#nombre_chz').chosen();
 		$('#rootwizard-2').validate();
-		$('#marca').change(function(event) {
-			$('#smarca').empty();
+		$('#marca_id').change(function(event) {
+			$('#smarca_id').empty();
 			var id = $(this).val();
-			$.get('{{URL::to("/dropdown")}}/'+id, function(data) {
+			$.get('{{URL::to("/vehiculos/dropdown")}}/'+id, function(data) {
 				$.each(data, function(id, nombre) {
-					$('#smarca').append('<option value="'+id+'">'+nombre+'</option>');
+					$('#smarca_id').append('<option value="'+id+'">'+nombre+'</option>');
 				});
 			});
 		});
 	});
 </script>
 @stop
+

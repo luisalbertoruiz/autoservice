@@ -19,7 +19,7 @@ class="page-body"
 				<a href="{{ URL::to('/admin')}}">Administración</a>
 			</li>
 			<li>
-				<a href="{{ URL::to('/proveedor')}}">Proveedores</a>
+				<a href="{{ URL::to('/proveedores')}}">Proveedores</a>
 			</li>
 			<li class="active">
 				<strong>Mostrar</strong>
@@ -51,10 +51,10 @@ class="page-body"
 				</div>
 				<div class="col-sm-3">
 					<div class="profile-buttons">
-						<a href="{{URL::to('/proveedor/editar/'.$proveedor->id)}}" class="btn btn-default tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="editar">
+						<a href="{{URL::to('/proveedores/editar/'.$proveedor->id)}}" class="btn btn-default tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="editar">
 							<i class="fa fa-edit"></i>
 						</a>
-						<a href="{{URL::to('/proveedor/eliminar/'.$proveedor->id)}}" class="btn btn-default tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="eliminar">
+						<a href="{{URL::to('/proveedores/eliminar/'.$proveedor->id)}}" class="btn btn-default tooltip-primary" data-toggle="tooltip" data-placement="top" data-original-title="eliminar">
 							<i class="glyphicon glyphicon-trash"></i>
 						</a>
 					</div>
@@ -116,7 +116,7 @@ class="page-body"
 					</div>
 					<hr>
 					<div class="col-md-offset-7 col-md-5">
-						<a class="btn btn-primary btn-icon icon-left pull-right" href='{{ URL::to('/proveedor')}}'><i class="entypo-reply"></i>Regresar</a>
+						<a class="btn btn-primary btn-icon icon-left pull-right" href='{{ URL::to('/proveedores')}}'><i class="entypo-reply"></i>Regresar</a>
 					</div>
 				</div>
 			</section>

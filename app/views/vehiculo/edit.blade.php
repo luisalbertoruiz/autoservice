@@ -19,19 +19,19 @@ class="page-body"
 				<a href="{{ URL::to('/admin')}}">Administración</a>
 			</li>
 			<li>
-				<a href="{{ URL::to('/cliente')}}">Clientes</a>
+				<a href="{{ URL::to('/vehiculos')}}">Vehiculos</a>
 			</li>
 			<li class="active">
 				<strong>Editar</strong>
 			</li>
 		</ol>
 		<hr>
-		<h2>Edición de Datos del Cliente</h2>
-		<form role="form" class="form-horizontal form-groups-bordered" method="post" action="{{ URL::to('/cliente/actualizar/'.$cliente->id) }}">
+		<h2>Edición de Datos del vehiculo</h2>
+		<form role="form" class="form-horizontal form-groups-bordered" method="post" action="{{ URL::to('/vehiculos/actualizar/'.$vehiculo->id) }}">
 			<div class="panel panel-primary" data-collapsed="0">
 				<div class="panel-heading">
 					<div class="panel-title">
-						Datos Personales
+						Información Específica
 					</div>
 					<div class="panel-options">
 						<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
@@ -40,21 +40,35 @@ class="page-body"
 				</div>
 				<div class="panel-body">
 					<div class="form-group">
-						<label for="nombre" class="col-sm-3 control-label">Nombre o Razón Social</label>
+						<label for="cliente_id" class="col-sm-3 control-label">Propietario</label>
 						<div class="input-group col-sm-5">
 							<span class="input-group-addon">
 								<i class="entypo-users"></i>
 							</span>
-							<input type="text" class="form-control" id="nombre" name="nombre" maxlength="30" required value="{{$cliente->nombre}}">
+							<select name="cliente_id" id="cliente_id" class="form-control" required>
+								<option value="{{$vehiculo->cliente->id}}">{{$vehiculo->cliente->nombre}}</option>
+								@foreach($clientes as $cliente)
+									<option value="{{$cliente->id}}">{{$cliente->nombre}}</option>
+								@endforeach
+							</select>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="rfc" class="col-sm-3 control-label">RFC</label>
+						<label for="placas" class="col-sm-3 control-label">Placas</label>
 						<div class="input-group col-sm-5">
 							<span class="input-group-addon">
 								<i class="entypo-vcard"></i>
 							</span>
-							<input type="text" class="form-control" id="rfc" name="rfc" maxlength="13" required pattern="^[a-zA-Z0-9]*$" value="{{$cliente->rfc}}">
+							<input type="text" class="form-control" id="placas" name="placas" maxlength="13" required pattern="^[a-zA-Z0-9]*$" value="{{$vehiculo->placas}}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="serie" class="col-sm-3 control-label">No. Serie</label>
+						<div class="input-group col-sm-5">
+							<span class="input-group-addon">
+								<i class="entypo-vcard"></i>
+							</span>
+							<input type="text" class="form-control" id="serie" name="serie" maxlength="16" pattern="^[a-zA-Z0-9]*$" value="{{$vehiculo->serie}}">
 						</div>
 					</div>
 				</div>
@@ -62,7 +76,7 @@ class="page-body"
 			<div class="panel panel-primary" data-collapsed="0">
 				<div class="panel-heading">
 					<div class="panel-title">
-						Dirección
+						Características
 					</div>
 					<div class="panel-options">
 						<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
@@ -71,39 +85,56 @@ class="page-body"
 				</div>
 				<div class="panel-body">
 					<div class="form-group">
-						<label for="calle" class="col-sm-3 control-label">Calle y Número</label>
+						<label for="marca_id" class="col-sm-3 control-label">Marca</label>
 						<div class="input-group col-sm-5">
 							<span class="input-group-addon">
 								<i class="entypo-home"></i>
 							</span>
-							<input type="text" class="form-control" id="calle" name="calle" maxlength="50" value="{{$cliente->calle}}">
+							<select name="marca_id" id="marca_id" class="form-control">
+								<option value="{{$vehiculo->marca->id}}">{{$vehiculo->marca->nombre}}</option>
+								@foreach($marcas as $marca)
+									<option value="{{$marca->id}}">{{$marca->nombre}}</option>
+								@endforeach
+							</select>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="colonia" class="col-sm-3 control-label">Colonia</label>
+						<label for="smarca_id" class="col-sm-3 control-label">sub Marca</label>
 						<div class="input-group col-sm-5">
 							<span class="input-group-addon">
 								<i class="entypo-address"></i>
 							</span>
-							<input type="text" class="form-control" id="colonia" name="colonia" maxlength="30" value="{{$cliente->colonia}}">
+							<select name="smarca_id" id="smarca_id" class="form-control" required>
+								<option value="{{$vehiculo->smarca->id}}">{{$vehiculo->smarca->nombre}}</option>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="localidad" class="col-sm-3 control-label">Localidad</label>
+						<label for="modelo" class="col-sm-3 control-label">Modelo</label>
 						<div class="input-group col-sm-5">
 							<span class="input-group-addon">
 								<i class="entypo-map"></i>
 							</span>
-							<input type="text" class="form-control" id="localidad" name="localidad" maxlength="30" value="{{$cliente->localidad}}">
+							<select name="modelo" id="modelo" class="form-control">
+								<option value="{{$vehiculo->modelo}}">{{$vehiculo->modelo}}</option>
+									@for($i=1990;$i<=2015;$i++)
+										<option value="{{$i}}">{{$i}}</option>
+									@endfor
+							</select>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="cp" class="col-sm-3 control-label">Código Postal</label>
+						<label for="color_id" class="col-sm-3 control-label">Color</label>
 						<div class="input-group col-sm-5">
 							<span class="input-group-addon">
 								<i class="entypo-location"></i>
 							</span>
-							<input type="text" class="form-control" id="cp" name="cp" maxlength="5" pattern="^[0-9]{5}" value="{{$cliente->cp}}">
+							<select name="color_id" id="color_id" class="form-control">
+								<option value="{{$vehiculo->color->id}}">{{$vehiculo->color->nombre}}</option>
+								@foreach($colores as $color)
+									<option value="{{$color->id}}">{{$color->nombre}}</option>
+								@endforeach
+							</select>
 						</div>
 					</div>
 				</div>
@@ -111,7 +142,7 @@ class="page-body"
 			<div class="panel panel-primary" data-collapsed="0">
 				<div class="panel-heading">
 					<div class="panel-title">
-						Contacto
+						Comentario
 					</div>
 					<div class="panel-options">
 						<a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
@@ -120,39 +151,12 @@ class="page-body"
 				</div>
 				<div class="panel-body">
 					<div class="form-group">
-						<label for="telefono" class="col-sm-3 control-label">Teléfono</label>
+						<label for="nota" class="col-sm-3 control-label">Nota</label>
 						<div class="input-group col-sm-5">
 							<span class="input-group-addon">
 								<i class="entypo-phone"></i>
 							</span>
-							<input type="text" class="form-control" id="telefono" name="telefono" maxlength="10" pattern="^\d+$" value="{{$cliente->telefono}}">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="celular" class="col-sm-3 control-label">Celular</label>
-						<div class="input-group col-sm-5">
-							<span class="input-group-addon">
-								<i class="entypo-mobile"></i>
-							</span>
-							<input type="text" class="form-control" id="celular" name="celular" maxlength="10" pattern="^\d+$" value="{{$cliente->celular}}">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="radio" class="col-sm-3 control-label">Radio</label>
-						<div class="input-group col-sm-5">
-							<span class="input-group-addon">
-								<i class="entypo-network"></i>
-							</span>
-							<input type="text" class="form-control" id="radio" name="radio" maxlength="10" pattern="^\d+$" value="{{$cliente->radio}}">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="email" class="col-sm-3 control-label">eMail</label>
-						<div class="input-group col-sm-5">
-							<span class="input-group-addon">
-								<i class="entypo-mail"></i>
-							</span>
-							<input type="email" class="form-control" id="email" name="email" maxlength="50" value="{{$cliente->email}}">
+							<input type="text" class="form-control" id="nota" name="nota" maxlength="10" pattern="^\d+$" value="{{$vehiculo->nota}}">
 						</div>
 					</div>
 				</div>
@@ -168,14 +172,25 @@ class="page-body"
 </div>
 @stop
 @section('css')
+{{ HTML::style('css/chosen.min.css') }}
 @stop
 @section('js')
+{{ HTML::script('js/chosen.jquery.min.js') }}
 @stop
 @section('script')
 <script type="text/javascript">
 	jQuery(document).ready(function($)
 	{
-		
+		$('#cliente_id').chosen();
+		$('#marca_id').change(function(event) {
+			$('#smarca_id').empty();
+			var id = $(this).val();
+			$.get('{{URL::to("/dropdown")}}/'+id, function(data) {
+				$.each(data, function(id, nombre) {
+					$('#smarca_id').append('<option value="'+id+'">'+nombre+'</option>');
+				});
+			});
+		});
 	});
 </script>
 @stop
